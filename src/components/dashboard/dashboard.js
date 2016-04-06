@@ -10,18 +10,18 @@ export default class Dashboard extends Component {
         <PageHeader title="AMAR2000" subtitle="Office environment monitoring" />
         <div className="row">
           <div className="col-md-6">
-            <Panel title="Temperature" />
+            <Panel title="Temperature" panelType="panel panel-warning" />
           </div>
           <div className="col-md-6">
-            <Panel title="CO2" />
+            <Panel title="CO2" panelType="panel panel-danger" />
           </div>
         </div>
         <div className="row">
           <div className="col-md-6">
-            <Panel title="Humidity" />
+            <Panel title="Humidity" panelType="panel panel-warning" />
           </div>
           <div className="col-md-6">
-            <Panel title="Sound" />
+            <Panel title="Sound" panelType="panel panel-success" />
           </div>
         </div>
       </div>
