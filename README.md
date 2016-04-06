@@ -43,3 +43,10 @@ http-server build/
 ```
 
 Browse to http://localhost:8080 or 8081
+
+## deploy to Heroky (production)
+
+Any code merged into master and push to the remote repository on Github 
+will be published to the Heroku server.
+
+Browse to https://amar2000-client.herokuapp.com/
