@@ -2,14 +2,8 @@ const server = () => {
   const http = require('http');
   const express = require('express');
   const app = express();
-  const port = process.env && process.env.PORT || 80;
-  const ip = process.env && process.env.IP || '0.0.0.0';
-
-  // Simple logger.
-  app.use((req, res, next) => {
-    console.log('%s %s', req.method, req.url);
-    next();
-  });
+  const port = 80;
+  const ip = '0.0.0.0';
 
   // Set generic headers used in all responses.
   app.use((req, res, next) => {
