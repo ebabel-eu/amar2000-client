@@ -6,6 +6,10 @@ Dashboard the environment data of an office and alerts when parameters enter unh
 ```
 npm install
 npm install -g http-server
+npm install -g eslint
+npm install -g eslint-config-airbnb
+npm install -g eslint-plugin-react
+npm install -g babel-eslint
 ```
 
 ## run locally
