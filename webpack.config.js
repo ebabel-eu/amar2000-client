@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    'bundle': './src'
+    'bundle': './src/index'
   },
   devtool: 'source-map',
   output: {

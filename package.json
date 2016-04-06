@@ -4,7 +4,8 @@
   "description": "Dashboard the environment data of an office and alerts when parameters enter unhealthy ranges.",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "karma start --single-run",
+    "test-watch": "karma start"
   },
   "repository": {
     "type": "git",

@@ -12,6 +12,30 @@ npm install -g eslint-plugin-react
 npm install -g babel-eslint
 ```
 
+## build
+
+```
+webpack
+```
+
+### build continuously
+
+```
+webpack -w
+```
+
+## unit test
+
+```
+npm test
+```
+
+### unit test continuously
+
+```
+npm run test-watch
+```
+
 ## run locally
 
 ```
