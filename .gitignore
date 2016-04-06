@@ -31,3 +31,17 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
+
+# Custom 
+.DS_Store
+bower_components
+node_modules
+.sass-cache
+html-angular-validate-report.json
+ssl
+build/*.js
+build/*.json
+build/*.map
+coverage
+.nyc_output
+*.log

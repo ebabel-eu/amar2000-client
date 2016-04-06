@@ -1,0 +1,7 @@
+{
+  "jshint.enable": false,
+  "eslint.enable": true,
+  "editor.tabSize": 2,
+  "sass.validate": true,
+  "sass.lint.important": "warning"
+}
