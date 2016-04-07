@@ -13,6 +13,8 @@
 
   height:180px;
   width:180px;
+  animation: beat 1.25s infinite alternate;
+
 
   @media screen and (min-width: 992px) {
     height:220px;
@@ -24,6 +26,10 @@
     width:260px;
   }
 }
+@keyframes beat{
+  to { transform: scale(1.4); }
+}
+
 .circle {
   position: absolute;
   border-radius: 50%;
