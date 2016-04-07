@@ -4,10 +4,9 @@ export default class Ranges {
     this.low = low;
     this.high = high;
     this.highest = highest;
-
   }
 
-  statusText(data, type){
+  statusText(data, type) {
     let text = '';
 
     switch (type) {
@@ -42,20 +41,19 @@ export default class Ranges {
         break;
       default:
         throw new Error('Unexpected type');
-        break;
     }
 
-    return text
+    return text;
   }
 
   isWarning(data) {
-    return data !== null && 
+    return data !== null &&
       (this.isHigh(data) || this.isLow(data));
   }
 
   isLow(data) {
     return data !== null &&
-      (data <= this.low &&  data >= this.lowest);
+      (data <= this.low && data >= this.lowest);
   }
 
   isHigh(data) {
@@ -70,7 +68,7 @@ export default class Ranges {
 
   isDanger(data) {
     return data !== null &&
-      (this.isTooHigh(data) ||  this.isTooLow(data));
+      (this.isTooHigh(data) || this.isTooLow(data));
   }
 
   isTooLow(data) {
@@ -80,6 +78,4 @@ export default class Ranges {
   isTooHigh(data) {
     return data !== null && data >= this.highest;
   }
-
-
 }

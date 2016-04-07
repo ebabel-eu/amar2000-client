@@ -15,12 +15,16 @@ export default class DataFetcher {
         .done(data => {
           const co2 = data[0].sensors[0].cO2;
           const temperature = data[0].sensors[0].temperature;
+          const minimumTemperature = data[0].sensors[0].minimumTemperature;
+          const maximumTemperature = data[0].sensors[0].maximumTemperature;
           const humidity = data[0].sensors[0].humidity;
           const noise = data[0].sensors[0].noise;
 
           resolve({
             co2,
             temperature,
+            minimumTemperature,
+            maximumTemperature,
             humidity,
             noise,
           });

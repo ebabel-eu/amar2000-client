@@ -8,4 +8,4 @@ jsconfig.json
 .eslintrc
 .babelrc
 node_modules
-index.js
+server.js
