@@ -48,29 +48,19 @@ export default class Dashboard extends Component {
       return (
         <div className="container">
           <PageHeader title="Zone 1" subtitle="Circle A" />
-          <div className="row">
-            <div className="col-md-3 col-sm-6">
-              <Panel title="CO2" type="co2" unit="ppm"
-                data={this.state.data.co2} ranges={co2Ranges}
-              />
-            </div>
-            <div className="col-md-3 col-sm-6">
-              <Panel title="Temperature" type="temperature" unit={temperatureUnitText}
-                data={this.state.data.temperature} ranges={temperatureRanges}
-                dataUnit="°"
-              />
-            </div>
-            <div className="col-md-3 col-sm-6">
-              <Panel title="Humidity" type="humidity" unit="%"
-                data={this.state.data.humidity} ranges={humidityRanges}
-              />
-            </div>
-            <div className="col-md-3 col-sm-6">
-              <Panel title="Noise" type="noise" unit="dB"
-                data={this.state.data.noise} ranges={noiseRanges}
-              />
-            </div>
-          </div>
+          <Panel title="CO2" type="co2" unit="ppm"
+            data={this.state.data.co2} ranges={co2Ranges}
+          />
+          <Panel title="Temperature" type="temperature" unit={temperatureUnitText}
+            data={this.state.data.temperature} ranges={temperatureRanges}
+            dataUnit="°"
+          />
+          <Panel title="Humidity" type="humidity" unit="%"
+            data={this.state.data.humidity} ranges={humidityRanges}
+          />
+          <Panel title="Noise" type="noise" unit="dB"
+            data={this.state.data.noise} ranges={noiseRanges}
+          />
         </div>
       );
     }
