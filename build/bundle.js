@@ -20325,7 +20325,7 @@
 	
 	Panel.propTypes = {
 	  title: _react2.default.PropTypes.string.isRequired,
-	  data: _react2.default.PropTypes.number.isRequired,
+	  data: _react2.default.PropTypes.number,
 	  ranges: _react2.default.PropTypes.object.isRequired,
 	  type: _react2.default.PropTypes.string,
 	  unit: _react2.default.PropTypes.string.isRequired
