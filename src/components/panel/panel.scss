@@ -1,7 +1,42 @@
+.circles{
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-align-content: space-between;
+  -ms-flex-line-pack: justify;
+  align-content: space-between;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+
+  
+}
+
+
 .circle-container {
+
+
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-align-self: auto;
+  -ms-flex-item-align: auto;
+  align-self: auto;
+
+
+
   text-align: center;
-  margin:0 20px 40px;
-  display:inline-block;
+  margin:0 0 0px;
+  //display:inline-block;
   animation: beat 1.25s infinite alternate;
   transform-origin: center;
   &.warning{
@@ -14,9 +49,9 @@
 
 .outer-circle {
   position: relative;
-  display: inline-block;
+  //display: inline-block;
   border-radius: 50%;
-  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.56);
+  box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.26);
   margin: auto;
 
   height: 180px;
@@ -31,6 +66,7 @@
     height: 260px;
     width: 260px;
   }
+
 
 
 }

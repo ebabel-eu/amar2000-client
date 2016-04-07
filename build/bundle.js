@@ -19746,7 +19746,7 @@
 	      var co2Ranges = new _ranges2.default(300, 400, 700, 800);
 	      var temperatureRanges = new _ranges2.default(19, 21, 24, 26);
 	      var humidityRanges = new _ranges2.default(30, 40, 60, 70);
-	      var noiseRanges = new _ranges2.default(10, 30, 47, 55);
+	      var noiseRanges = new _ranges2.default(10, 30, 47, 68);
 	
 	      var minimumTemperature = this.state.data.minimumTemperature;
 	      var maximumTemperature = this.state.data.maximumTemperature;
@@ -19758,19 +19758,23 @@
 	          'div',
 	          { className: 'container' },
 	          _react2.default.createElement(_pageHeader2.default, { title: 'Zone 1', subtitle: 'Circle A' }),
-	          _react2.default.createElement(_panel2.default, { title: 'CO2', type: 'co2', unit: 'ppm',
-	            data: this.state.data.co2, ranges: co2Ranges
-	          }),
-	          _react2.default.createElement(_panel2.default, { title: 'Temperature', type: 'temperature', unit: temperatureUnitText,
-	            data: this.state.data.temperature, ranges: temperatureRanges,
-	            dataUnit: '°'
-	          }),
-	          _react2.default.createElement(_panel2.default, { title: 'Humidity', type: 'humidity', unit: '%',
-	            data: this.state.data.humidity, ranges: humidityRanges
-	          }),
-	          _react2.default.createElement(_panel2.default, { title: 'Noise', type: 'noise', unit: 'dB',
-	            data: this.state.data.noise, ranges: noiseRanges
-	          })
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'circles' },
+	            _react2.default.createElement(_panel2.default, { title: 'CO2', type: 'co2', unit: 'ppm',
+	              data: this.state.data.co2, ranges: co2Ranges
+	            }),
+	            _react2.default.createElement(_panel2.default, { title: 'Temperature', type: 'temperature', unit: temperatureUnitText,
+	              data: this.state.data.temperature, ranges: temperatureRanges,
+	              dataUnit: '°'
+	            }),
+	            _react2.default.createElement(_panel2.default, { title: 'Humidity', type: 'humidity', unit: '%',
+	              data: this.state.data.humidity, ranges: humidityRanges
+	            }),
+	            _react2.default.createElement(_panel2.default, { title: 'Noise', type: 'noise', unit: 'dB',
+	              data: this.state.data.noise, ranges: noiseRanges
+	            })
+	          )
 	        );
 	      }
 	
@@ -19893,7 +19897,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".page-header {\n  border: none;\n  text-align: center; }\n", ""]);
+	exports.push([module.id, ".page-header {\n  position: absolute;\n  width: 100%;\n  top: 100px;\n  border: none;\n  text-align: center; }\n", ""]);
 	
 	// exports
 
@@ -20413,7 +20417,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".circle-container {\n  text-align: center;\n  margin: 0 20px 40px;\n  display: inline-block; }\n\n.outer-circle {\n  position: relative;\n  display: inline-block;\n  border-radius: 50%;\n  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.56);\n  margin: auto;\n  height: 180px;\n  width: 180px; }\n  @media screen and (min-width: 992px) {\n    .outer-circle {\n      height: 220px;\n      width: 220px; } }\n  @media screen and (min-width: 1200px) {\n    .outer-circle {\n      height: 260px;\n      width: 260px; } }\n\n.circle {\n  position: absolute;\n  border-radius: 50%;\n  display: inline-block;\n  width: 90%;\n  height: 90%;\n  margin: auto;\n  top: 5%;\n  left: 5%;\n  line-height: 1.3;\n  z-index: 10; }\n  .circle .text {\n    margin-top: 30%;\n    text-align: center;\n    z-index: 2;\n    position: relative; }\n  .circle:before, .circle:after {\n    z-index: 1;\n    position: absolute;\n    content: '';\n    border-radius: 50%;\n    display: inline-block;\n    width: 94%;\n    height: 94%;\n    background-color: #fff;\n    left: 3%;\n    top: 3%; }\n  .circle:after {\n    z-index: 1; }\n  .circle:before {\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    z-index: 0;\n    background: silver; }\n    .safe .circle:before {\n      background: forestgreen; }\n    .danger .circle:before {\n      background: red; }\n    .warning .circle:before {\n      background: darkorange; }\n    .circle:before .no-data {\n      background: silver; }\n", ""]);
+	exports.push([module.id, ".circles {\n  display: -ms-flexbox;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-flex-direction: row;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -webkit-flex-wrap: wrap;\n  -ms-flex-wrap: wrap;\n  flex-wrap: wrap;\n  -webkit-justify-content: space-around;\n  -ms-flex-pack: distribute;\n  justify-content: space-around;\n  -webkit-align-content: space-between;\n  -ms-flex-line-pack: justify;\n  align-content: space-between;\n  -webkit-align-items: center;\n  -ms-flex-align: center;\n  align-items: center; }\n\n.circle-container {\n  -webkit-flex: 0 1 auto;\n  -ms-flex: 0 1 auto;\n  flex: 0 1 auto;\n  -webkit-align-self: auto;\n  -ms-flex-item-align: auto;\n  align-self: auto;\n  text-align: center;\n  margin: 0 0 0px;\n  animation: beat 1.25s infinite alternate;\n  transform-origin: center; }\n  .circle-container.warning {\n    animation: beatwarning .5s infinite alternate; }\n  .circle-container.danger {\n    animation: beatdanger .2s infinite alternate; }\n\n.outer-circle {\n  position: relative;\n  border-radius: 50%;\n  box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.26);\n  margin: auto;\n  height: 180px;\n  width: 180px; }\n  @media screen and (min-width: 992px) {\n    .outer-circle {\n      height: 220px;\n      width: 220px; } }\n  @media screen and (min-width: 1200px) {\n    .outer-circle {\n      height: 260px;\n      width: 260px; } }\n\n@keyframes beat {\n  to {\n    transform: scale(1.02); } }\n\n@keyframes beatwarning {\n  to {\n    transform: scale(1.05); } }\n\n@keyframes beatdanger {\n  to {\n    transform: scale(1.1); } }\n\n.circle {\n  position: absolute;\n  border-radius: 50%;\n  display: inline-block;\n  width: 90%;\n  height: 90%;\n  margin: auto;\n  top: 5%;\n  left: 5%;\n  line-height: 1.3;\n  z-index: 10; }\n  .circle .text {\n    margin-top: 30%;\n    text-align: center;\n    z-index: 2;\n    position: relative; }\n  .circle:before, .circle:after {\n    z-index: 1;\n    position: absolute;\n    content: '';\n    border-radius: 50%;\n    display: inline-block;\n    width: 94%;\n    height: 94%;\n    background-color: #fff;\n    left: 3%;\n    top: 3%; }\n  .circle:after {\n    z-index: 1; }\n  .circle:before {\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    z-index: 0;\n    background: silver; }\n    .safe .circle:before {\n      background: forestgreen; }\n    .danger .circle:before {\n      background: red; }\n    .warning .circle:before {\n      background: darkorange; }\n    .circle:before .no-data {\n      background: silver; }\n", ""]);
 	
 	// exports
 

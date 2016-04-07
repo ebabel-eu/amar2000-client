@@ -47,7 +47,8 @@ export default class Dashboard extends Component {
     if (data) {
       return (
         <div className="container">
-          <PageHeader title="Zone 1" subtitle="Circle A" />
+            <PageHeader title="Zone 1" subtitle="Circle A" />
+          <div className="circles">
           <Panel title="CO2" type="co2" unit="ppm"
             data={this.state.data.co2} ranges={co2Ranges}
           />
@@ -61,6 +62,7 @@ export default class Dashboard extends Component {
           <Panel title="Noise" type="noise" unit="dB"
             data={this.state.data.noise} ranges={noiseRanges}
           />
+          </div>
         </div>
       );
     }
