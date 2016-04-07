@@ -27,7 +27,7 @@ export default class Panel extends Component {
             <div className="text">
               <h3>{this.props.title}</h3>
               <h1>{data}</h1>
-              <p>{unit}</p>
+              <p className="unit">{unit}</p>
               <p className="condition">{statusText}</p>
             </div>
           </div>
@@ -43,7 +43,7 @@ Panel.defaultProps = {
 
 Panel.propTypes = {
   title: React.PropTypes.string.isRequired,
-  data: React.PropTypes.object.isRequired,
+  data: React.PropTypes.number.isRequired,
   ranges: React.PropTypes.object.isRequired,
   type: React.PropTypes.string,
   unit: React.PropTypes.string.isRequired,

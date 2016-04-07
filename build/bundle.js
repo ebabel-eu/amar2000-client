@@ -19685,11 +19685,11 @@
 	
 	var _panel2 = _interopRequireDefault(_panel);
 	
-	var _dataFetcher = __webpack_require__(171);
+	var _dataFetcher = __webpack_require__(169);
 	
 	var _dataFetcher2 = _interopRequireDefault(_dataFetcher);
 	
-	var _ranges = __webpack_require__(172);
+	var _ranges = __webpack_require__(170);
 	
 	var _ranges2 = _interopRequireDefault(_ranges);
 	
@@ -19810,7 +19810,8 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.default = PageHeader;
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(1);
 	
@@ -19820,23 +19821,47 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function PageHeader() {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'page-header' },
-	    _react2.default.createElement(
-	      'h1',
-	      null,
-	      this.props.title,
-	      ' ',
-	      _react2.default.createElement(
-	        'small',
-	        null,
-	        this.props.subtitle
-	      )
-	    )
-	  );
-	}
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var PageHeader = function (_Component) {
+	  _inherits(PageHeader, _Component);
+	
+	  function PageHeader() {
+	    _classCallCheck(this, PageHeader);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(PageHeader).apply(this, arguments));
+	  }
+	
+	  _createClass(PageHeader, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'page-header' },
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          this.props.title,
+	          ' ',
+	          _react2.default.createElement(
+	            'small',
+	            null,
+	            this.props.subtitle
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return PageHeader;
+	}(_react.Component);
+	
+	exports.default = PageHeader;
+	
 	
 	PageHeader.propTypes = {
 	  title: _react2.default.PropTypes.string.isRequired,
@@ -20213,7 +20238,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	__webpack_require__(169);
+	__webpack_require__(167);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -20273,7 +20298,7 @@
 	              ),
 	              _react2.default.createElement(
 	                'p',
-	                null,
+	                { className: 'unit' },
 	                unit
 	              ),
 	              _react2.default.createElement(
@@ -20300,7 +20325,7 @@
 	
 	Panel.propTypes = {
 	  title: _react2.default.PropTypes.string.isRequired,
-	  data: _react2.default.PropTypes.object.isRequired,
+	  data: _react2.default.PropTypes.number.isRequired,
 	  ranges: _react2.default.PropTypes.object.isRequired,
 	  type: _react2.default.PropTypes.string,
 	  unit: _react2.default.PropTypes.string.isRequired
@@ -20361,15 +20386,13 @@
 
 
 /***/ },
-/* 167 */,
-/* 168 */,
-/* 169 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(170);
+	var content = __webpack_require__(168);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(164)(content, {});
@@ -20389,7 +20412,7 @@
 	}
 
 /***/ },
-/* 170 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(163)();
@@ -20403,7 +20426,7 @@
 
 
 /***/ },
-/* 171 */
+/* 169 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -20465,7 +20488,7 @@
 	exports.default = DataFetcher;
 
 /***/ },
-/* 172 */
+/* 170 */
 /***/ function(module, exports) {
 
 	'use strict';
