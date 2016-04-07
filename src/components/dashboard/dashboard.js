@@ -57,6 +57,7 @@ export default class Dashboard extends Component {
             <div className="col-md-3 col-sm-6">
               <Panel title="Temperature" type="temperature" unit={temperatureUnitText}
                 data={this.state.data.temperature} ranges={temperatureRanges}
+                dataUnit="°"
               />
             </div>
             <div className="col-md-3 col-sm-6">

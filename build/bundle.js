@@ -19772,7 +19772,8 @@
 	              'div',
 	              { className: 'col-md-3 col-sm-6' },
 	              _react2.default.createElement(_panel2.default, { title: 'Temperature', type: 'temperature', unit: temperatureUnitText,
-	                data: this.state.data.temperature, ranges: temperatureRanges
+	                data: this.state.data.temperature, ranges: temperatureRanges,
+	                dataUnit: '°'
 	              })
 	            ),
 	            _react2.default.createElement(
@@ -20270,6 +20271,7 @@
 	    key: 'render',
 	    value: function render() {
 	      var data = this.props.data;
+	      var dataUnit = this.props.dataUnit;
 	      var ranges = this.props.ranges;
 	      var type = this.props.type;
 	      var unit = this.props.unit;
@@ -20303,7 +20305,8 @@
 	              _react2.default.createElement(
 	                'h1',
 	                null,
-	                data
+	                data,
+	                dataUnit
 	              ),
 	              _react2.default.createElement(
 	                'p',
@@ -20335,6 +20338,7 @@
 	Panel.propTypes = {
 	  title: _react2.default.PropTypes.string.isRequired,
 	  data: _react2.default.PropTypes.number,
+	  dataUnit: _react2.default.PropTypes.string,
 	  ranges: _react2.default.PropTypes.object.isRequired,
 	  type: _react2.default.PropTypes.string,
 	  unit: _react2.default.PropTypes.string.isRequired
