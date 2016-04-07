@@ -9,18 +9,14 @@ export default class DataFetcher {
             $.ajax({
                 type: 'GET',
                 url: this.endpoint,
-                async: false,
-                contentType: "text/plain",
+                async: true,
                 dataType: 'json'
             })
-              .done(()=> {
-                  console.log( "success" );
+              .done(data => {
+                  resolve(data);
               })
-              .fail(()=> {
-                  console.log( "error" );
-              })
-              .always(()=> {
-                  console.log( "complete" );
+              .fail(jqXHR => {
+                  reject(jqXHR.error());
               });
         });
     }

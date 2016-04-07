@@ -1,31 +1,35 @@
 import React, { Component } from 'react';
+
+import classNames from 'classnames';
 import ChartistGraph from 'react-chartist';
 
-
+import './panel.scss';
 
 export default class Panel extends Component {
 
+
+
+
   render() {
-      var data = {
-          series: [40, 20, 30, 30]
-
-      };
-      var options = {
-          donut: true,
-          donutWidth: 10,
-          startAngle: 270,
-          total: 200,
-          showLabel: false
-      };
-
+    var data = this.props.data;
+    var containerClass = classNames({
+      'circle-container':true,
+      'no-data': data === null,
+      'safe': data !== null && (data > this.props.indicators[1] && data < this.props.indicators[2]),
+      'danger': data !== null && (data > this.props.indicators[3] ||  data < this.props.indicators[0]),
+      'warning':  data !== null && (data >= this.props.indicators[2] && data <= this.props.indicators[3] ||  data <= this.props.indicators[1] &&  data >= this.props.indicators[0])
+    });
     return (
-      <div className={this.props.panelType}>
-        <div className="panel-heading">
-          <h1 className="panel-title">{this.props.title}</h1>
-        </div>
-        <div className="panel-body">
-            <div className="circle"></div>
-            <ChartistGraph data={data} options={options} type={this.props.chartType} />
+      <div className={containerClass}>
+        <div className="outer-circle">
+            <div className="circle">
+              <div className="text">
+                <h3>{this.props.title}</h3>
+                <h1>{data}</h1>
+                <p>unit</p>
+                <p className="condition"></p>
+              </div>
+            </div>
         </div>
       </div>
     );
@@ -33,11 +37,10 @@ export default class Panel extends Component {
 }
 
 Panel.defaultProps = {
-  panelType: 'panel panel-default',
-    chartType: 'Bar'
+  type: 'temperature'
 };
 
 Panel.propTypes = {
   title: React.PropTypes.string.isRequired,
-  panelType: React.PropTypes.string,
+  type: React.PropTypes.string,
 };

@@ -1,18 +1,92 @@
-@mixin background-gradient-all (){
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ce0000+0,ff0084+25,b4df5b+52,0fb4e7+78,ff920a+100 */
-    background: rgb(206,0,0); /* Old browsers */
-    background: -moz-linear-gradient(top,  rgba(206,0,0,1) 0%, rgba(255,0,132,1) 25%, rgba(180,223,91,1) 52%, rgba(15,180,231,1) 78%, rgba(255,146,10,1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top,  rgba(206,0,0,1) 0%,rgba(255,0,132,1) 25%,rgba(180,223,91,1) 52%,rgba(15,180,231,1) 78%,rgba(255,146,10,1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom,  rgba(206,0,0,1) 0%,rgba(255,0,132,1) 25%,rgba(180,223,91,1) 52%,rgba(15,180,231,1) 78%,rgba(255,146,10,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ce0000', endColorstr='#ff920a',GradientType=0 ); /* IE6-9 */
+.circle-container {
+    text-align: center;
+    margin-bottom: 40px;
 }
-.circle{
+
+.outer-circle{
     position: relative;
+    display: inline-block;
+    border-radius: 50%;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.56);
+    margin: auto;
+
+    height:180px;
+    width:180px;
+
+    @media screen and (min-width: 992px) {
+        height:220px;
+        width:220px;
+    }
+
+    @media screen and (min-width: 1200px) {
+        height:260px;
+        width:260px;
+    }
+}
+.circle {
+    position: absolute;
     border-radius: 50%;
     display: inline-block;
-    width: 170px;
-    height: 170px;
+    width: 90%;
+    height: 90%;
+    margin:auto;
+    top:5%;
+    left:5%;
     line-height: 1.3;
     z-index: 10;
+    .text{
+        margin-top:30%;
+        text-align: center;
+        font-size: 50px;
+        z-index: 2;
+        position: relative;
+    }
+    &:before,
+    &:after {
+        z-index: 1;
+        position: absolute;
+        //left: 5px;
+        //top: 5px;
+        content: '';
+        border-radius: 50%;
+        display: inline-block;
 
+        width: 94%;
+        height: 94%;
+        background-color: #fff;
+        left: 3%;
+        top: 3%;
+
+    }
+    &:after{
+        z-index: 1;
+    }
+    &:before {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        background:silver;
+        .safe &{
+            background:forestgreen;
+        }
+        .danger &{
+            background:red;
+        }
+        .warning &{
+            background:darkorange;
+        }
+
+        .no-data {
+            background: silver;
+        }
+        //@include background-gradient-all();
+        //background-size: 400% 400%;
+        //-webkit-animation: marvosbike 8s ease infinite;
+        //-moz-animation: marvosbike 8s ease infinite;
+        //animation: marvosbike 8s ease infinite;
+        //
+
+    }
 }
