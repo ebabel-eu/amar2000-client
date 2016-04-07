@@ -38,6 +38,11 @@ export default class Dashboard extends Component {
     const humidityRanges = new Ranges(30, 40, 60, 70);
     const noiseRanges = new Ranges(10, 30, 47, 55);
 
+    const minimumTemperature = this.state.data.minimumTemperature;
+    const maximumTemperature = this.state.data.maximumTemperature;
+    const temperatureUnit = new TemperatureUnit(minimumTemperature, maximumTemperature);
+    const temperatureUnitText = temperatureUnit.getText();
+
     if (data) {
       return (
         <div className="container">
@@ -47,9 +52,10 @@ export default class Dashboard extends Component {
                 data={this.state.data.co2} ranges={co2Ranges}
               />
 
-              <Panel title="Temperature" type="temperature" unit="&deg;C"
-                data={this.state.data.temperature} ranges={temperatureRanges}
-              />
+            <Panel title="Temperature" type="temperature" unit={temperatureUnitText}
+                   data={this.state.data.temperature} ranges={temperatureRanges}
+                   dataUnit="°"
+            />
 
               <Panel title="Humidity" type="humidity" unit="%"
                 data={this.state.data.humidity} ranges={humidityRanges}

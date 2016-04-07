@@ -7,6 +7,7 @@ import './panel.scss';
 export default class Panel extends Component {
   render() {
     const data = this.props.data;
+    const dataUnit = this.props.dataUnit;
     const ranges = this.props.ranges;
     const type = this.props.type;
     const unit = this.props.unit;
@@ -26,7 +27,7 @@ export default class Panel extends Component {
           <div className="circle">
             <div className="text">
               <h3>{this.props.title}</h3>
-              <h1>{data}</h1>
+              <h1>{data}{dataUnit}</h1>
               <p className="unit">{unit}</p>
               <p className="condition">{statusText}</p>
             </div>
@@ -44,6 +45,7 @@ Panel.defaultProps = {
 Panel.propTypes = {
   title: React.PropTypes.string.isRequired,
   data: React.PropTypes.number,
+  dataUnit: React.PropTypes.string,
   ranges: React.PropTypes.object.isRequired,
   type: React.PropTypes.string,
   unit: React.PropTypes.string.isRequired,
