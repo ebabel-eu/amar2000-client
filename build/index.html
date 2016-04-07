@@ -12,14 +12,31 @@
 
     <!--<link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">-->
     <!--<script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>-->
-
-
   </head>
   <body>    
     <div id="root"></div>
 
     <script src="/lib/jquery/jquery.js"></script>
+    <script src="/lib/signalr/jquery.signalR.js"></script>
     <script src="/lib/bootstrap/js/bootstrap.js"></script>
     <script src="./bundle.js"></script>
+
+
+    <script type="text/javascript">
+      $(function () {
+        var connection = $.connection('/dummy-data/latest.json');
+        connection.error(function(error){
+          console.log(error);
+        });
+        connection.received(function (data) {
+          console.log('The time is ' + data.time.toString());
+        });
+
+        connection.start().done(function() {
+          console.log("connection started!");
+        });
+      });
+    </script>
+
   </body>
 </html>
