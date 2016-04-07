@@ -4,6 +4,7 @@ import PageHeader from '../page-header/page-header';
 import Panel from '../panel/panel';
 import DataFetcher from './data-fetcher.js';
 import Ranges from './ranges.js';
+import TemperatureUnit from './temperature-unit.js';
 
 export default class Dashboard extends Component {
   constructor() {
@@ -46,25 +47,20 @@ export default class Dashboard extends Component {
     if (data) {
       return (
         <div className="container">
-          <PageHeader title="AMAR2000" subtitle="Office environment monitoring" />
-
-              <Panel title="CO2" type="co2" unit="ppm"
-                data={this.state.data.co2} ranges={co2Ranges}
-              />
-
-            <Panel title="Temperature" type="temperature" unit={temperatureUnitText}
-                   data={this.state.data.temperature} ranges={temperatureRanges}
-                   dataUnit="°"
-            />
-
-              <Panel title="Humidity" type="humidity" unit="%"
-                data={this.state.data.humidity} ranges={humidityRanges}
-              />
-
-              <Panel title="Noise" type="noise" unit="dB"
-                data={this.state.data.noise} ranges={noiseRanges}
-              />
-
+          <PageHeader title="Zone 1" subtitle="Circle A" />
+          <Panel title="CO2" type="co2" unit="ppm"
+            data={this.state.data.co2} ranges={co2Ranges}
+          />
+          <Panel title="Temperature" type="temperature" unit={temperatureUnitText}
+            data={this.state.data.temperature} ranges={temperatureRanges}
+            dataUnit="°"
+          />
+          <Panel title="Humidity" type="humidity" unit="%"
+            data={this.state.data.humidity} ranges={humidityRanges}
+          />
+          <Panel title="Noise" type="noise" unit="dB"
+            data={this.state.data.noise} ranges={noiseRanges}
+          />
         </div>
       );
     }
