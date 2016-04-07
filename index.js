@@ -1,12 +1,13 @@
-const server = () => {
-  const http = require('http');
-  const express = require('express');
-  const app = express();
-  const port = 80;
-  const ip = '0.0.0.0';
+// In production (Heroku), node.js can be used to run this static website.
+var server = function() {
+  var http = require('http');
+  var express = require('express');
+  var app = express();
+  var port = 80;
+  var ip = '0.0.0.0';
 
   // Set generic headers used in all responses.
-  app.use((req, res, next) => {
+  app.use(function (req, res, next) {
     res.set({
       'X-Powered-By': 'NodeJS',
       'Access-Control-Allow-Methods': 'GET',
@@ -16,12 +17,12 @@ const server = () => {
   });
 
   // Handle all static file GET requests.
-  app.use(express.static(`${__dirname}/build`));
+  app.use(express.static(__dirname + '/build'));
 
   http.createServer(
     app.handle.bind(app)
   ).listen(port, ip, () => {
-    const logMessage = `Listening on http://${ip}:${port}`;
+    var logMessage = 'Listening on http://' + ip + ':' + port;
     console.log(logMessage);
   });
 };
