@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PageHeader from '../page-header/page-header';
 import Panel from '../panel/panel';
 import DataFetcher from './data-fetcher.js';
+import Ranges from './ranges.js';
 
 export default class Dashboard extends Component {
   constructor() {
@@ -26,7 +27,7 @@ export default class Dashboard extends Component {
         });
       })
       .catch(error => {
-        console.log(`An error occurred: ${error}`);
+        throw new Error(error);
       });
 
   }
@@ -34,11 +35,10 @@ export default class Dashboard extends Component {
   render() {
     const data = this.state.data;
 
-    const co2Indicators = [300,400,800,1000];
-    const temperatureIndicators = [19,21,24,28];
-    const humidityIndicators = [40,50,60,70];
-    const noiseIndicators = [40,50,60,70];
-
+    const co2Ranges = new Ranges(300,400,800,1000);
+    const temperatureRanges = new Ranges(19,21,24,28);
+    const humidityRanges = new Ranges(40,50,60,70);
+    const noiseRanges = new Ranges(40,50,60,70);
 
     if(data){
       return (
@@ -46,16 +46,16 @@ export default class Dashboard extends Component {
           <PageHeader title="AMAR2000" subtitle="Office environment monitoring"/>
           <div className="row">
             <div className="col-md-3 col-sm-6">
-              <Panel title="CO2" type="co2" data={this.state.data.co2} indicators={co2Indicators} />
+              <Panel title="CO2" type="co2" data={this.state.data.co2} ranges={co2Ranges} />
             </div>
             <div className="col-md-3 col-sm-6">
-              <Panel title="Temperature"  type="temperature"  data={this.state.data.temperature} indicators={temperatureIndicators}/>
+              <Panel title="Temperature"  type="temperature"  data={this.state.data.temperature} ranges={temperatureRanges}/>
             </div>
             <div className="col-md-3 col-sm-6">
-              <Panel title="Humidity" type="humidity" data={this.state.data.humidity} indicators={humidityIndicators} />
+              <Panel title="Humidity" type="humidity" data={this.state.data.humidity} ranges={humidityRanges} />
             </div>
             <div className="col-md-3 col-sm-6">
-              <Panel title="Noise"  type="noise" data={this.state.data.noise} indicators={noiseIndicators} />
+              <Panel title="Noise"  type="noise" data={this.state.data.noise} ranges={noiseRanges} />
             </div>
           </div>
         </div>

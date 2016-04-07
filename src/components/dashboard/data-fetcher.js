@@ -16,7 +16,9 @@ export default class DataFetcher {
                   resolve(data);
               })
               .fail(jqXHR => {
-                  reject(jqXHR.error());
+                  const error = jqXHR.error();
+                  reject(error);
+                  throw new Error(error);
               });
         });
     }

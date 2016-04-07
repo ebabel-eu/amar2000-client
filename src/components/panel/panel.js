@@ -11,14 +11,16 @@ export default class Panel extends Component {
 
 
   render() {
-    var data = this.props.data;
-    var containerClass = classNames({
+    const data = this.props.data;
+    const ranges = this.props.ranges;
+    const containerClass = classNames({
       'circle-container':true,
       'no-data': data === null,
-      'safe': data !== null && (data > this.props.indicators[1] && data < this.props.indicators[2]),
-      'danger': data !== null && (data > this.props.indicators[3] ||  data < this.props.indicators[0]),
-      'warning':  data !== null && (data >= this.props.indicators[2] && data <= this.props.indicators[3] ||  data <= this.props.indicators[1] &&  data >= this.props.indicators[0])
+      'safe': ranges.isSafe(data),
+      'danger': ranges.isDanger(data),
+      'warning':  ranges.isWarning(data)
     });
+
     return (
       <div className={containerClass}>
         <div className="outer-circle">
