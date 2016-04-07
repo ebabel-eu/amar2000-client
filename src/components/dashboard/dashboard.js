@@ -35,10 +35,10 @@ export default class Dashboard extends Component {
   render() {
     const data = this.state.data;
 
-    const co2Ranges = new Ranges(300,400,600,800);
-    const temperatureRanges = new Ranges(19,21,24,28);
-    const humidityRanges = new Ranges(40,50,60,70);
-    const noiseRanges = new Ranges(30,40,50,60);
+    const co2Ranges = new Ranges(300,400,700,800);
+    const temperatureRanges = new Ranges(19,21,24,26);
+    const humidityRanges = new Ranges(30,40,60,70);
+    const noiseRanges = new Ranges(10,30,47,55);
 
     if(data){
       return (

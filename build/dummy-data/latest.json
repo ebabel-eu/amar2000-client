@@ -1,6 +1,6 @@
 {
-  "temperature": 23,
+  "temperature": 17,
   "humidity": 80,
-  "co2": 100,
+  "co2": 900,
   "noise": 55
 }

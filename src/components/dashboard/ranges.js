@@ -34,7 +34,7 @@ export default class Ranges {
 
         break;
       case 'noise':
-        if (this.isTooLow(data)) { text = 'no noise'; }
+        if (this.isTooLow(data)) { text = 'is anyone here?'; }
         if (this.isLow(data)) { text = 'silent'; }
         if (this.isSafe(data)) { text = 'quiet'; }
         if (this.isHigh(data)) { text = 'noisy'; }
