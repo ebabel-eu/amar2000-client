@@ -1,15 +1,37 @@
 import React, { Component } from 'react';
 
-export default class Panel extends Component {
+import classNames from 'classnames';
+import ChartistGraph from 'react-chartist';
 
+import './panel.scss';
+
+export default class Panel extends Component {
   render() {
+    const data = this.props.data;
+    const ranges = this.props.ranges
+    const type = this.props.type;
+    const unit = this.props.unit;
+
+    const containerClass = classNames({
+      'circle-container': true,
+      'no-data': data === null,
+      'safe': ranges.isSafe(data),
+      'danger': ranges.isDanger(data),
+      'warning':  ranges.isWarning(data)
+    });
+    const statusText = ranges.statusText(data, type);
+
     return (
-      <div className={this.props.panelType}>
-        <div className="panel-heading">
-          <h1 className="panel-title">{this.props.title}</h1>
-        </div>
-        <div className="panel-body">
-          data goes here
+      <div className={containerClass}>
+        <div className="outer-circle">
+            <div className="circle">
+              <div className="text">
+                <h3>{this.props.title}</h3>
+                <h1>{data}</h1>
+                <p>{unit}</p>
+                <p className="condition">{statusText}</p>
+              </div>
+            </div>
         </div>
       </div>
     );
@@ -17,10 +39,10 @@ export default class Panel extends Component {
 }
 
 Panel.defaultProps = {
-  panelType: 'panel panel-default',
+  type: 'temperature'
 };
 
 Panel.propTypes = {
   title: React.PropTypes.string.isRequired,
-  panelType: React.PropTypes.string,
+  type: React.PropTypes.string,
 };

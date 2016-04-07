@@ -6,6 +6,7 @@ Dashboard the environment data of an office and alerts when parameters enter unh
 ```
 npm install
 npm install -g http-server
+npm install -g webpack
 npm install -g eslint
 npm install -g eslint-config-airbnb
 npm install -g eslint-plugin-react
@@ -50,3 +51,8 @@ Any code merged into master and push to the remote repository on Github
 will be published to the Heroku server.
 
 Browse to https://amar2000-client.herokuapp.com/
+
+## Usefull links:
+https://dev.netatmo.com/doc/authentication/usercred
+https://github.com/fraserxu/react-chartist
+http://www.buroepn.nl/ventilatie/co2-en-het-vergaderruimte-effect

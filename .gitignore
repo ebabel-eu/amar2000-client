@@ -42,3 +42,9 @@ ssl
 coverage
 .nyc_output
 *.log
+
+# Intellij project files
+*.iml
+*.ipr
+*.iws
+.idea/
