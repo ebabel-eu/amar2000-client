@@ -12,8 +12,8 @@ export default class Ranges {
 
     switch (type) {
       case 'co2':
-        if (this.isTooLow(data)) { text = 'very good'; }
-        if (this.isLow(data)) { text = 'good'; }
+        if (this.isTooLow(data)) { text = 'insufficient co2'; }
+        if (this.isLow(data)) { text = 'low co2'; }
         if (this.isSafe(data)) { text = 'normal'; }
         if (this.isHigh(data)) { text = 'ventilate'; }
         if (this.isTooHigh(data)) { text = 'open all windows'; }

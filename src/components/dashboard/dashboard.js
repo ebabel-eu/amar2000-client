@@ -35,10 +35,10 @@ export default class Dashboard extends Component {
   render() {
     const data = this.state.data;
 
-    const co2Ranges = new Ranges(300,400,800,1000);
+    const co2Ranges = new Ranges(300,400,600,800);
     const temperatureRanges = new Ranges(19,21,24,28);
     const humidityRanges = new Ranges(40,50,60,70);
-    const noiseRanges = new Ranges(40,50,60,70);
+    const noiseRanges = new Ranges(30,40,50,60);
 
     if(data){
       return (
@@ -46,16 +46,16 @@ export default class Dashboard extends Component {
           <PageHeader title="AMAR2000" subtitle="Office environment monitoring"/>
           <div className="row">
             <div className="col-md-3 col-sm-6">
-              <Panel title="CO2" type="co2" data={this.state.data.co2} ranges={co2Ranges} />
+              <Panel title="CO2" type="co2" unit="ppm" data={this.state.data.co2}ranges={co2Ranges} />
             </div>
             <div className="col-md-3 col-sm-6">
-              <Panel title="Temperature"  type="temperature"  data={this.state.data.temperature} ranges={temperatureRanges}/>
+              <Panel title="Temperature"  type="temperature" unit="&deg;C" data={this.state.data.temperature} ranges={temperatureRanges}/>
             </div>
             <div className="col-md-3 col-sm-6">
-              <Panel title="Humidity" type="humidity" data={this.state.data.humidity} ranges={humidityRanges} />
+              <Panel title="Humidity" type="humidity" unit="%" data={this.state.data.humidity} ranges={humidityRanges} />
             </div>
             <div className="col-md-3 col-sm-6">
-              <Panel title="Noise"  type="noise" data={this.state.data.noise} ranges={noiseRanges} />
+              <Panel title="Noise"  type="noise"  unit="dB" data={this.state.data.noise} ranges={noiseRanges} />
             </div>
           </div>
         </div>

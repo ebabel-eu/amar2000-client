@@ -6,14 +6,12 @@ import ChartistGraph from 'react-chartist';
 import './panel.scss';
 
 export default class Panel extends Component {
-
-
-
-
   render() {
     const data = this.props.data;
     const ranges = this.props.ranges
     const type = this.props.type;
+    const unit = this.props.unit;
+
     const containerClass = classNames({
       'circle-container': true,
       'no-data': data === null,
@@ -30,7 +28,7 @@ export default class Panel extends Component {
               <div className="text">
                 <h3>{this.props.title}</h3>
                 <h1>{data}</h1>
-                <p>unit</p>
+                <p>{unit}</p>
                 <p className="condition">{statusText}</p>
               </div>
             </div>
