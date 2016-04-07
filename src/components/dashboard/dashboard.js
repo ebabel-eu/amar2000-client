@@ -47,7 +47,7 @@ export default class Dashboard extends Component {
     if (data) {
       return (
         <div className="container">
-          <PageHeader title="AMAR2000" subtitle="Office environment monitoring" />
+          <PageHeader title="Zone 1" subtitle="Circle A" />
           <div className="row">
             <div className="col-md-3 col-sm-6">
               <Panel title="CO2" type="co2" unit="ppm"
