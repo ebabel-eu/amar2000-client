@@ -42,28 +42,23 @@ export default class Dashboard extends Component {
       return (
         <div className="container">
           <PageHeader title="AMAR2000" subtitle="Office environment monitoring" />
-          <div className="row">
-            <div className="col-md-3 col-sm-6">
+
               <Panel title="CO2" type="co2" unit="ppm"
                 data={this.state.data.co2} ranges={co2Ranges}
               />
-            </div>
-            <div className="col-md-3 col-sm-6">
+
               <Panel title="Temperature" type="temperature" unit="&deg;C"
                 data={this.state.data.temperature} ranges={temperatureRanges}
               />
-            </div>
-            <div className="col-md-3 col-sm-6">
+
               <Panel title="Humidity" type="humidity" unit="%"
                 data={this.state.data.humidity} ranges={humidityRanges}
               />
-            </div>
-            <div className="col-md-3 col-sm-6">
+
               <Panel title="Noise" type="noise" unit="dB"
                 data={this.state.data.noise} ranges={noiseRanges}
               />
-            </div>
-          </div>
+
         </div>
       );
     }
