@@ -4,6 +4,7 @@ import PageHeader from '../page-header/page-header';
 import Panel from '../panel/panel';
 import DataFetcher from './data-fetcher.js';
 import Ranges from './ranges.js';
+import TemperatureUnit from './temperature-unit.js';
 
 export default class Dashboard extends Component {
   constructor() {
@@ -38,6 +39,11 @@ export default class Dashboard extends Component {
     const humidityRanges = new Ranges(30, 40, 60, 70);
     const noiseRanges = new Ranges(10, 30, 47, 55);
 
+    const minimumTemperature = this.state.data.minimumTemperature;
+    const maximumTemperature = this.state.data.maximumTemperature;
+    const temperatureUnit = new TemperatureUnit(minimumTemperature, maximumTemperature);
+    const temperatureUnitText = temperatureUnit.getText();
+
     if (data) {
       return (
         <div className="container">
@@ -49,7 +55,7 @@ export default class Dashboard extends Component {
               />
             </div>
             <div className="col-md-3 col-sm-6">
-              <Panel title="Temperature" type="temperature" unit="&deg;C"
+              <Panel title="Temperature" type="temperature" unit={temperatureUnitText}
                 data={this.state.data.temperature} ranges={temperatureRanges}
               />
             </div>

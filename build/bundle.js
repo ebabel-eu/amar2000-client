@@ -19693,6 +19693,10 @@
 	
 	var _ranges2 = _interopRequireDefault(_ranges);
 	
+	var _temperatureUnit = __webpack_require__(171);
+	
+	var _temperatureUnit2 = _interopRequireDefault(_temperatureUnit);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -19744,6 +19748,11 @@
 	      var humidityRanges = new _ranges2.default(30, 40, 60, 70);
 	      var noiseRanges = new _ranges2.default(10, 30, 47, 55);
 	
+	      var minimumTemperature = this.state.data.minimumTemperature;
+	      var maximumTemperature = this.state.data.maximumTemperature;
+	      var temperatureUnit = new _temperatureUnit2.default(minimumTemperature, maximumTemperature);
+	      var temperatureUnitText = temperatureUnit.getText();
+	
 	      if (data) {
 	        return _react2.default.createElement(
 	          'div',
@@ -19762,7 +19771,7 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'col-md-3 col-sm-6' },
-	              _react2.default.createElement(_panel2.default, { title: 'Temperature', type: 'temperature', unit: '°C',
+	              _react2.default.createElement(_panel2.default, { title: 'Temperature', type: 'temperature', unit: temperatureUnitText,
 	                data: this.state.data.temperature, ranges: temperatureRanges
 	              })
 	            ),
@@ -20633,6 +20642,40 @@
 	}();
 
 	exports.default = Ranges;
+
+/***/ },
+/* 171 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var TemperatureUnit = function () {
+	  function TemperatureUnit(minimumTemperature, maximumTemperature) {
+	    _classCallCheck(this, TemperatureUnit);
+	
+	    this.minimumTemperature = minimumTemperature;
+	    this.maximumTemperature = maximumTemperature;
+	  }
+	
+	  _createClass(TemperatureUnit, [{
+	    key: "getText",
+	    value: function getText() {
+	      return this.minimumTemperature + "° " + this.maximumTemperature + "°";
+	    }
+	  }]);
+	
+	  return TemperatureUnit;
+	}();
+
+	exports.default = TemperatureUnit;
 
 /***/ }
 /******/ ]);
