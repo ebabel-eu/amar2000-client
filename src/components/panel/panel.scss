@@ -2,6 +2,14 @@
   text-align: center;
   margin:0 20px 40px;
   display:inline-block;
+  animation: beat 1.25s infinite alternate;
+  transform-origin: center;
+  &.warning{
+    animation: beatwarning .5s infinite alternate;
+  }
+  &.danger{
+    animation: beatdanger .2s infinite alternate;
+  }
 }
 
 .outer-circle {
@@ -23,6 +31,20 @@
     height: 260px;
     width: 260px;
   }
+
+
+}
+
+
+
+@keyframes beat{
+  to { transform: scale(1.02); }
+}
+@keyframes beatwarning{
+  to { transform: scale(1.05); }
+}
+@keyframes beatdanger{
+  to { transform: scale(1.1); }
 }
 
 .circle {
