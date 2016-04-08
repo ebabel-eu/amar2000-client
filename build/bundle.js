@@ -19817,15 +19817,64 @@
 	              'Condition Zones'
 	            ),
 	            _react2.default.createElement(
-	              'span',
-	              null,
-	              'zone1 ',
+	              'div',
+	              { className: 'zoneblock' },
 	              _react2.default.createElement(
 	                'span',
-	                { className: 'dot' },
-	                '· '
+	                { className: 'zone' },
+	                'zone1'
 	              ),
-	              ' Normal'
+	              ' ',
+	              _react2.default.createElement('span', { className: 'dot' }),
+	              'Normal ',
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'zone' },
+	                'zone2'
+	              ),
+	              ' ',
+	              _react2.default.createElement('span', { className: 'dot warning' }),
+	              ' Humidity high ',
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'zone' },
+	                'zone3'
+	              ),
+	              ' ',
+	              _react2.default.createElement('span', { className: 'dot danger' }),
+	              'Bad'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'zoneblock' },
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'zone' },
+	                'zone4'
+	              ),
+	              ' ',
+	              _react2.default.createElement('span', { className: 'dot' }),
+	              'Normal ',
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'zone' },
+	                'zone5'
+	              ),
+	              ' ',
+	              _react2.default.createElement('span', { className: 'dot warning' }),
+	              ' Normal ',
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'zone' },
+	                'zone6'
+	              ),
+	              ' ',
+	              _react2.default.createElement('span', { className: 'dot warning' }),
+	              'CO² average'
 	            )
 	          )
 	        );
@@ -21147,7 +21196,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".zones {\n  text-align: left;\n  width: 100%;\n  display: none; }\n  .zones h1 {\n    text-transform: uppercase;\n    font-family: 'FuturaPT-Bold'; }\n", ""]);
+	exports.push([module.id, ".zones {\n  position: absolute;\n  bottom: 30px;\n  left: 30px;\n  text-align: left;\n  width: 100%;\n  padding: 30px;\n  font-size: 20px; }\n  .zones .zone {\n    text-transform: uppercase; }\n  .zones h1 {\n    font-size: 24px;\n    font-family: 'FuturaPT-Bold'; }\n  .zones .zoneblock {\n    width: 300px;\n    float: left; }\n", ""]);
 	
 	// exports
 
