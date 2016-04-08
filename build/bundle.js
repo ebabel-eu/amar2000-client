@@ -19794,7 +19794,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'circles' },
-	            _react2.default.createElement(_panel2.default, { title: 'CO2', type: 'co2', unit: 'ppm',
+	            _react2.default.createElement(_panel2.default, { title: 'CO₂', type: 'co2', unit: 'ppm',
 	              data: this.state.data.co2, ranges: co2Ranges
 	            }),
 	            _react2.default.createElement(_panel2.default, { title: 'Temperature', type: 'temperature', unit: temperatureUnitText,
