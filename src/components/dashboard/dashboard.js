@@ -87,7 +87,9 @@ export default class Dashboard extends Component {
           </div>
           <div className="zones">
             <h1>Condition Zones</h1>
-            <span>zone1 <span className="dot">&middot; </span> Normal</span>
+            <span className="zone">zone1</span> <span className="dot">&middot; </span>Normal <br/>
+            <span className="zone">zone1</span> <span className="dot warning">&middot;</span> Humidity high <br/>
+            <span className="zone">zone1</span> <span className="dot danger">&middot; </span>Bad
           </div>
         </div>
       );
