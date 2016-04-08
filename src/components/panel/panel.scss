@@ -34,14 +34,24 @@
   margin:0 0 30px;
 }
 .dot{
-  color: #24fe00;
-
-  &.danger{
-    color: #ff0012;
+  &:before {
+    content: '\25CF';
+    margin-right: 6px;
+    width: 12px;
+    height: 12px;
+    background-color: #24fe00;
+    border-radius: 50%;
+    font-size: 32px;
+    display: inline-block;
+    overflow: hidden;
   }
 
-  &.warning{
-    color: #ffde00;
+  &.danger:before {
+    background-color: #ff0012;
+  }
+
+  &.warning:before {
+    background-color: #ffde00;
   }
 }
 .average{
