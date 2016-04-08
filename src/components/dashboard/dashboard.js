@@ -7,6 +7,7 @@ import DataSyncer from './data-syncer.js';
 import Ranges from './ranges.js';
 import SplashScreen from './splashscreen';
 import TemperatureUnit from './temperature-unit.js';
+import TimerMixin from 'react-timer-mixin';
 
 import USE_CAPTURE from '../../constants.js';
 
@@ -27,19 +28,19 @@ export default class Dashboard extends Component {
     };
   }
 
-  componentWillMount() {
-    this.dataFetcher.fetch()
-      .then(data => {
-        this.setState({
-          data,
-        });
-      })
-      .catch(error => {
-        throw new Error(error);
-      });
-  }
-
   componentDidMount() {
+    TimerMixin.setTimeout(() => {
+      this.dataFetcher.fetch()
+        .then(data => {
+          this.setState({
+            data,
+          });
+        })
+        .catch(error => {
+          throw new Error(error);
+        });
+    }, 5000);
+
     document.addEventListener('sync-data', this.syncData.bind(this), USE_CAPTURE);
 
     this.dataSyncer.start();
@@ -58,7 +59,7 @@ export default class Dashboard extends Component {
     const co2Ranges = new Ranges(300, 400, 700, 800);
     const temperatureRanges = new Ranges(19, 21, 24, 26);
     const humidityRanges = new Ranges(30, 40, 60, 70);
-    const noiseRanges = new Ranges(10, 30, 47, 49);
+    const noiseRanges = new Ranges(10, 30, 47, 68);
 
     const minimumTemperature = this.state.data.minimumTemperature;
     const maximumTemperature = this.state.data.maximumTemperature;
@@ -72,17 +73,17 @@ export default class Dashboard extends Component {
           <div className="circles">
             <Panel title="CO2" type="co2" unit="ppm"
               data={this.state.data.co2} ranges={co2Ranges}
-              />
+            />
             <Panel title="Temperature" type="temperature" unit={temperatureUnitText}
               data={this.state.data.temperature} ranges={temperatureRanges}
               dataUnit="°"
-              />
+            />
             <Panel title="Humidity" type="humidity" unit="%"
               data={this.state.data.humidity} ranges={humidityRanges}
-              />
+            />
             <Panel title="Noise" type="noise" unit="dB"
               data={this.state.data.noise} ranges={noiseRanges}
-              />
+            />
           </div>
           <div className="zones">
             <h1>Condition Zones</h1>

@@ -19705,11 +19705,15 @@
 	
 	var _temperatureUnit2 = _interopRequireDefault(_temperatureUnit);
 	
-	var _constants = __webpack_require__(178);
+	var _reactTimerMixin = __webpack_require__(178);
+	
+	var _reactTimerMixin2 = _interopRequireDefault(_reactTimerMixin);
+	
+	var _constants = __webpack_require__(179);
 	
 	var _constants2 = _interopRequireDefault(_constants);
 	
-	__webpack_require__(179);
+	__webpack_require__(180);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -19741,21 +19745,20 @@
 	  }
 	
 	  _createClass(Dashboard, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      var _this2 = this;
-	
-	      this.dataFetcher.fetch().then(function (data) {
-	        _this2.setState({
-	          data: data
-	        });
-	      }).catch(function (error) {
-	        throw new Error(error);
-	      });
-	    }
-	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
+	      var _this2 = this;
+	
+	      _reactTimerMixin2.default.setTimeout(function () {
+	        _this2.dataFetcher.fetch().then(function (data) {
+	          _this2.setState({
+	            data: data
+	          });
+	        }).catch(function (error) {
+	          throw new Error(error);
+	        });
+	      }, 5000);
+	
 	      document.addEventListener('sync-data', this.syncData.bind(this), _constants2.default);
 	
 	      this.dataSyncer.start();
@@ -19776,7 +19779,7 @@
 	      var co2Ranges = new _ranges2.default(300, 400, 700, 800);
 	      var temperatureRanges = new _ranges2.default(19, 21, 24, 26);
 	      var humidityRanges = new _ranges2.default(30, 40, 60, 70);
-	      var noiseRanges = new _ranges2.default(10, 30, 47, 49);
+	      var noiseRanges = new _ranges2.default(10, 30, 47, 68);
 	
 	      var minimumTemperature = this.state.data.minimumTemperature;
 	      var maximumTemperature = this.state.data.maximumTemperature;
@@ -20899,14 +20902,16 @@
 	                'AMAR ',
 	                _react2.default.createElement(
 	                  'span',
-	                  null,
+	                  { className: 'addition' },
 	                  '2000'
 	                )
 	              ),
 	              _react2.default.createElement(
 	                'p',
-	                { className: 'unit' },
-	                'Everything is okay'
+	                { className: 'condition' },
+	                'Everything ',
+	                _react2.default.createElement('br', null),
+	                ' is okay'
 	              )
 	            )
 	          )
@@ -20955,7 +20960,7 @@
 	
 	
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, ".splashloader {\n  text-align: center;\n  overflow: hidden;\n  padding-bottom: 10px;\n  animation: outahere ease-in-out .5s 5s;\n  transform: scale(1); }\n  .splashloader h1 {\n    text-transform: uppercase;\n    font-family: 'FuturaPT-Light';\n    line-height: 50px;\n    animation: headerin ease-in-out 1s; }\n    .splashloader h1 span.addition {\n      font-family: 'FuturaPT-Bold';\n      display: block; }\n  .splashloader .condition {\n    animation: conditionin ease-in-out 1.5s; }\n  .splashloader .circle .text {\n    padding-top: 30%;\n    font-size: 30px; }\n  .splashloader .outer-circle {\n    height: 400px;\n    width: 400px; }\n  .splashloader .circle:before {\n    animation: beat 1.25s infinite alternate;\n    box-shadow: 0px 0px 20px 0px #24fe00,inset 0px 0px 20px 0px #24fe00; }\n\n@keyframes headerin {\n  to {\n    opacity: 1;\n    font-size: 50px; }\n  from {\n    opacity: 0;\n    font-size: 0; } }\n\n@keyframes conditionin {\n  to {\n    opacity: 1;\n    bottom: 10%; }\n  from {\n    opacity: 0;\n    bottom: -29%; } }\n\n@keyframes outahere {\n  to {\n    transform: scale(0); }\n  from {\n    transform: scale(1); } }\n\n@keyframes beat {\n  to {\n    transform: scale(1.05);\n    box-shadow: 0px 0px 20px 0px #24fe00, inset 0px 0px 20px 0px #24fe00; } }\n", ""]);
 	
 	// exports
 
@@ -21002,6 +21007,104 @@
 /* 178 */
 /***/ function(module, exports) {
 
+	/* WEBPACK VAR INJECTION */(function(global) {/*
+	 *  Copyright (c) 2015-present, Facebook, Inc.
+	 *  All rights reserved.
+	 *
+	 *  This source code is licensed under the BSD-style license found in the
+	 *  LICENSE file in the root directory of this source tree. An additional grant
+	 *  of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 */
+	'use strict';
+	
+	var GLOBAL = typeof window === 'undefined' ? global : window;
+	
+	var setter = function(_setter, _clearer, array) {
+	  return function(callback, delta) {
+	    var id = _setter(function() {
+	      _clearer.call(this, id);
+	      callback.apply(this, arguments);
+	    }.bind(this), delta);
+	
+	    if (!this[array]) {
+	      this[array] = [id];
+	    } else {
+	      this[array].push(id);
+	    }
+	    return id;
+	  };
+	};
+	
+	var clearer = function(_clearer, array) {
+	  return function(id) {
+	    if (this[array]) {
+	      var index = this[array].indexOf(id);
+	      if (index !== -1) {
+	        this[array].splice(index, 1);
+	      }
+	    }
+	    _clearer(id);
+	  };
+	};
+	
+	var _timeouts = 'TimerMixin_timeouts';
+	var _clearTimeout = clearer(GLOBAL.clearTimeout, _timeouts);
+	var _setTimeout = setter(GLOBAL.setTimeout, _clearTimeout, _timeouts);
+	
+	var _intervals = 'TimerMixin_intervals';
+	var _clearInterval = clearer(GLOBAL.clearInterval, _intervals);
+	var _setInterval = setter(GLOBAL.setInterval, function() {/* noop */}, _intervals);
+	
+	var _immediates = 'TimerMixin_immediates';
+	var _clearImmediate = clearer(GLOBAL.clearImmediate, _immediates);
+	var _setImmediate = setter(GLOBAL.setImmediate, _clearImmediate, _immediates);
+	
+	var _rafs = 'TimerMixin_rafs';
+	var _cancelAnimationFrame = clearer(GLOBAL.cancelAnimationFrame, _rafs);
+	var _requestAnimationFrame = setter(GLOBAL.requestAnimationFrame, _cancelAnimationFrame, _rafs);
+	
+	var TimerMixin = {
+	  componentWillUnmount: function() {
+	    this[_timeouts] && this[_timeouts].forEach(function(id) {
+	      GLOBAL.clearTimeout(id);
+	    });
+	    this[_timeouts] = null;
+	    this[_intervals] && this[_intervals].forEach(function(id) {
+	      GLOBAL.clearInterval(id);
+	    });
+	    this[_intervals] = null;
+	    this[_immediates] && this[_immediates].forEach(function(id) {
+	      GLOBAL.clearImmediate(id);
+	    });
+	    this[_immediates] = null;
+	    this[_rafs] && this[_rafs].forEach(function(id) {
+	      GLOBAL.cancelAnimationFrame(id);
+	    });
+	    this[_rafs] = null;
+	  },
+	
+	  setTimeout: _setTimeout,
+	  clearTimeout: _clearTimeout,
+	
+	  setInterval: _setInterval,
+	  clearInterval: _clearInterval,
+	
+	  setImmediate: _setImmediate,
+	  clearImmediate: _clearImmediate,
+	
+	  requestAnimationFrame: _requestAnimationFrame,
+	  cancelAnimationFrame: _cancelAnimationFrame,
+	};
+	
+	module.exports = TimerMixin;
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 179 */
+/***/ function(module, exports) {
+
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
@@ -21012,13 +21115,13 @@
 	var USE_CAPTURE = exports.USE_CAPTURE = false; // Event listening capture.
 
 /***/ },
-/* 179 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(180);
+	var content = __webpack_require__(181);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(164)(content, {});
@@ -21038,7 +21141,7 @@
 	}
 
 /***/ },
-/* 180 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(163)();

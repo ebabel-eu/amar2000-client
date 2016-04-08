@@ -1,0 +1,78 @@
+.splashloader{
+    text-align:center;
+    overflow:hidden;
+    padding-bottom:10px;
+    animation: outahere ease-in-out .5s 5s  ;
+    transform: scale(1);
+    h1{
+        text-transform: uppercase;
+        font-family: 'FuturaPT-Light';
+        line-height: 50px;
+
+        span.addition{
+            font-family: 'FuturaPT-Bold';
+            display: block;
+        }
+        animation: headerin ease-in-out 1s  ;
+
+    }
+    .condition {
+
+        animation: conditionin ease-in-out 1.5s   ;
+    }
+    .circle .text {
+        padding-top: 30%;
+        font-size: 30px;
+    }
+    .outer-circle {
+        height: 400px;
+        width: 400px;
+    }
+    .circle {
+        &:before {
+            animation: beat 1.25s infinite alternate;
+            box-shadow: 0px 0px 20px 0px #24fe00,inset 0px 0px 20px 0px #24fe00
+        }
+    }
+}
+@keyframes headerin {
+    to{
+        opacity: 1;
+        //margin-top:0px;
+        font-size:50px;
+    }
+    from {
+        opacity: 0;
+        font-size:0;
+
+        //margin-top: -300px;
+    }
+
+}
+@keyframes conditionin {
+    to{
+        opacity: 1;
+        bottom: 10%;
+    }
+    from {
+        opacity: 0;
+        bottom: -29%;
+
+    }
+
+}
+@keyframes outahere{
+    to {
+             transform: scale(0);
+         }
+    from {
+        transform: scale(1);
+    }
+}
+@keyframes beat{
+    to {
+        transform: scale(1.05);
+        box-shadow: 0px 0px 20px 0px #24fe00, inset 0px 0px 20px 0px #24fe00;
+
+    }
+}
