@@ -20635,7 +20635,7 @@
 /* 171 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -20654,9 +20654,13 @@
 	  }
 	
 	  _createClass(TemperatureUnit, [{
-	    key: "getText",
+	    key: 'getText',
 	    value: function getText() {
-	      return this.minimumTemperature + "° " + this.maximumTemperature + "°";
+	      if (this.minimumTemperature && this.maximumTemperature) {
+	        return '↓' + this.minimumTemperature + '° ↑' + this.maximumTemperature + '°';
+	      }
+	
+	      return '';
 	    }
 	  }]);
 	
