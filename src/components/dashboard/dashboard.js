@@ -71,7 +71,7 @@ export default class Dashboard extends Component {
         <div className="container">
           <PageHeader title="Zone 1" subtitle="Circle A" />
           <div className="circles">
-            <Panel title="CO2" type="co2" unit="ppm"
+            <Panel title="CO₂" type="co2" unit="ppm"
               data={this.state.data.co2} ranges={co2Ranges}
             />
             <Panel title="Temperature" type="temperature" unit={temperatureUnitText}
