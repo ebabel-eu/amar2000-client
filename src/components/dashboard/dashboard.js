@@ -4,6 +4,7 @@ import PageHeader from '../page-header/page-header';
 import Panel from '../panel/panel';
 import DataFetcher from './data-fetcher.js';
 import Ranges from './ranges.js';
+import SplashScreen from './splashscreen';
 import TemperatureUnit from './temperature-unit.js';
 
 import './dashboard.scss';
@@ -17,8 +18,8 @@ export default class Dashboard extends Component {
         co2: null,
         temperature: null,
         humidity: null,
-        noise: null,
-      },
+        noise: null
+      }
     };
   }
   componentWillMount() {
@@ -46,7 +47,7 @@ export default class Dashboard extends Component {
     const temperatureUnit = new TemperatureUnit(minimumTemperature, maximumTemperature);
     const temperatureUnitText = temperatureUnit.getText();
 
-    if (data) {
+    if (data.co2 !== null ) {
       return (
         <div className="container">
             <PageHeader title="Zone 1" subtitle="Circle A" />
@@ -73,9 +74,10 @@ export default class Dashboard extends Component {
       );
     }
 
+
     return (
       <div className="container">
-        <p>Loading data...</p>
+        <SplashScreen />
       </div>
     );
   }
