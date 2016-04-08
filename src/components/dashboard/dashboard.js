@@ -6,6 +6,7 @@ import DataFetcher from './data-fetcher.js';
 import Ranges from './ranges.js';
 import SplashScreen from './splashscreen';
 import TemperatureUnit from './temperature-unit.js';
+import TimerMixin from 'react-timer-mixin';
 
 import './dashboard.scss';
 
@@ -22,16 +23,34 @@ export default class Dashboard extends Component {
       }
     };
   }
+
+  componentDidMount() {
+
+    TimerMixin.setTimeout(
+      () => {
+
+        this.dataFetcher.fetch()
+          .then(data => {
+            this.setState({
+              data,
+            });
+          })
+          .catch(error => {
+            throw new Error(error);
+          });
+
+      },
+      5000
+    );
+
+
+  }
+
   componentWillMount() {
-    this.dataFetcher.fetch()
-      .then(data => {
-        this.setState({
-          data,
-        });
-      })
-      .catch(error => {
-        throw new Error(error);
-      });
+
+
+
+
   }
 
   render() {

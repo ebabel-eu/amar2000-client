@@ -60,6 +60,7 @@
     "react": "0.14.7",
     "react-chartist": "0.10.1",
     "react-dom": "0.14.7",
-    "react-router": "2.0.1"
+    "react-router": "2.0.1",
+    "react-timer-mixin": "^0.13.3"
   }
 }

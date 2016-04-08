@@ -9,12 +9,11 @@ export default class SplashScreen extends Component {
         <div className="outer-circle">
           <div className="circle">
             <div className="text">
-              <h1>AMAR <span>2000</span></h1>
-              <p className="unit">Everything is okay</p>
+              <h1>AMAR <span className="addition">2000</span></h1>
+              <p className="condition">Everything <br /> is okay</p>
             </div>
           </div>
         </div>
-
       </div>
     );
   }
