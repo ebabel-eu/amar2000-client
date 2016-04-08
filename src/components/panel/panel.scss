@@ -23,8 +23,6 @@
 
 
 .circle-container {
-
-
   -webkit-flex: 0 1 auto;
   -ms-flex: 0 1 auto;
   flex: 0 1 auto;
@@ -32,14 +30,24 @@
   -ms-flex-item-align: auto;
   align-self: auto;
 
-
-
   text-align: center;
-  margin:0 0 0px;
-  //display:inline-block;
+  margin:0 0 30px;
+}
+.dot{
+  color: #24fe00;
+
+  &.danger{
+    color: #ff0012;
+  }
+
+  &.warning{
+    color: #ffde00;
+  }
+}
+.average{
+  margin-top:40px;
 
 }
-
 .outer-circle {
   position: relative;
   //display: inline-block;
@@ -81,10 +89,22 @@
   z-index: 10;
   
   .text {
-    margin-top: 30%;
+    height: 100%;
+    padding-top:15%;
     text-align: center;
     z-index: 2;
     position: relative;
+    box-sizing: border-box;
+  }
+  .condition{
+    position: absolute;
+    bottom:10%;
+    width:100%;
+  }
+  @media screen and (min-width: 992px) {
+    .text {
+      padding-top: 30%;
+    }
   }
 
   &:before,

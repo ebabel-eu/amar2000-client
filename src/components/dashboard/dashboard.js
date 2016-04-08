@@ -6,6 +6,8 @@ import DataFetcher from './data-fetcher.js';
 import Ranges from './ranges.js';
 import TemperatureUnit from './temperature-unit.js';
 
+import './dashboard.scss';
+
 export default class Dashboard extends Component {
   constructor() {
     super();
@@ -49,19 +51,23 @@ export default class Dashboard extends Component {
         <div className="container">
             <PageHeader title="Zone 1" subtitle="Circle A" />
           <div className="circles">
-          <Panel title="CO2" type="co2" unit="ppm"
-            data={this.state.data.co2} ranges={co2Ranges}
-          />
-          <Panel title="Temperature" type="temperature" unit={temperatureUnitText}
-            data={this.state.data.temperature} ranges={temperatureRanges}
-            dataUnit="°"
-          />
-          <Panel title="Humidity" type="humidity" unit="%"
-            data={this.state.data.humidity} ranges={humidityRanges}
-          />
-          <Panel title="Noise" type="noise" unit="dB"
-            data={this.state.data.noise} ranges={noiseRanges}
-          />
+            <Panel title="CO2" type="co2" unit="ppm"
+              data={this.state.data.co2} ranges={co2Ranges}
+            />
+            <Panel title="Temperature" type="temperature" unit={temperatureUnitText}
+              data={this.state.data.temperature} ranges={temperatureRanges}
+              dataUnit="°"
+            />
+            <Panel title="Humidity" type="humidity" unit="%"
+              data={this.state.data.humidity} ranges={humidityRanges}
+            />
+            <Panel title="Noise" type="noise" unit="dB"
+              data={this.state.data.noise} ranges={noiseRanges}
+            />
+          </div>
+          <div className="zones">
+            <h1>Condition Zones</h1>
+            <span>zone1 <span className="dot">&middot;</span> Normal</span>
           </div>
         </div>
       );

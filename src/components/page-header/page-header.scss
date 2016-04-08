@@ -1,8 +1,16 @@
 .page-header {
-  position: absolute;
+  //position: absolute;
   width:100%;
   top:100px;
+  padding-bottom: 65px;
   border: none;
   text-align: center;
-
+  //font-family: 'FuturaPT-Bold';
+  h1{
+    text-transform: uppercase;
+    font-family: 'FuturaPT-Bold';
+    span.addition{
+      font-family: 'FuturaPT-Light';
+    }
+  }
 }
