@@ -37,14 +37,7 @@
   text-align: center;
   margin:0 0 0px;
   //display:inline-block;
-  animation: beat 1.25s infinite alternate;
-  transform-origin: center;
-  &.warning{
-    animation: beatwarning .5s infinite alternate;
-  }
-  &.danger{
-    animation: beatdanger .2s infinite alternate;
-  }
+
 }
 
 .outer-circle {
@@ -73,15 +66,7 @@
 
 
 
-@keyframes beat{
-  to { transform: scale(1.02); }
-}
-@keyframes beatwarning{
-  to { transform: scale(1.05); }
-}
-@keyframes beatdanger{
-  to { transform: scale(1.1); }
-}
+
 
 .circle {
   position: absolute;
@@ -114,10 +99,20 @@
     background-color: #fff;
     left: 3%;
     top: 3%;
+    transform: scale(1);
   }
 
   &:after{
     z-index: 1;
+    animation: beat 1.25s infinite alternate;
+    transform-origin: center;
+    .warning &{
+      animation: beatwarning .8s infinite alternate;
+    }
+
+    .danger &{
+      animation: beatdanger .5s infinite alternate;
+    }
   }
 
   &:before {
@@ -127,21 +122,42 @@
     height: 100%;
     z-index: 0;
     background: silver;
+    animation: beat 1.25s infinite alternate;
+    transform-origin: center;
 
     .safe &{
-      background: forestgreen;
+      background: #24fe00;
     }
 
     .danger &{
-      background: red;
+      background: #ff0012;
+      animation: beatdanger .5s infinite alternate;
     }
 
     .warning &{
-      background: darkorange;
+      animation: beatwarning .8s infinite alternate;
+      background: #ffde00;
     }
 
     .no-data {
       background: silver;
     }
   }
+}
+@keyframes beat{
+  to {
+    transform: scale(1.01);
+    box-shadow: 0px 0px 7px 0px #24fe00;
+  }
+}
+@keyframes beatwarning{
+  to {
+    transform: scale(1.02);
+    box-shadow: 0px 0px 7px 0px #ffde00;
+  }
+}
+@keyframes beatdanger{
+  to {
+    transform: scale(1.04);
+    box-shadow: 0px 0px 7px 0px  #ff0012;;}
 }
