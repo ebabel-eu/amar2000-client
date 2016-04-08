@@ -5,7 +5,7 @@
     text-align:left;
     width:100%;
     padding:30px;
-    text-transform: uppercase;
+   
     .zone{
         text-transform: uppercase;
     }
@@ -13,5 +13,10 @@
     h1{
         font-size:24px;
         font-family: 'FuturaPT-Bold';
+    }
+    .zoneblock{
+        width:300px;
+        float:left;
+
     }
 }
