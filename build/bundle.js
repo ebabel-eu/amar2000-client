@@ -19697,6 +19697,8 @@
 	
 	var _temperatureUnit2 = _interopRequireDefault(_temperatureUnit);
 	
+	__webpack_require__(172);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -19774,6 +19776,26 @@
 	            _react2.default.createElement(_panel2.default, { title: 'Noise', type: 'noise', unit: 'dB',
 	              data: this.state.data.noise, ranges: noiseRanges
 	            })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'zones' },
+	            _react2.default.createElement(
+	              'h1',
+	              null,
+	              'Condition Zones'
+	            ),
+	            _react2.default.createElement(
+	              'span',
+	              null,
+	              'zone1 ',
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'dot' },
+	                '·'
+	              ),
+	              ' Normal'
+	            )
 	          )
 	        );
 	      }
@@ -19842,8 +19864,8 @@
 	          this.props.title,
 	          ' ',
 	          _react2.default.createElement(
-	            'small',
-	            null,
+	            'span',
+	            { className: 'addition' },
 	            this.props.subtitle
 	          )
 	        )
@@ -19897,7 +19919,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".page-header {\n  position: absolute;\n  width: 100%;\n  top: 100px;\n  border: none;\n  text-align: center; }\n", ""]);
+	exports.push([module.id, ".page-header {\n  width: 100%;\n  top: 100px;\n  padding-bottom: 65px;\n  border: none;\n  text-align: center; }\n  .page-header h1 {\n    text-transform: uppercase;\n    font-family: 'FuturaPT-Bold'; }\n    .page-header h1 span.addition {\n      font-family: 'FuturaPT-Light'; }\n", ""]);
 	
 	// exports
 
@@ -20259,6 +20281,9 @@
 	      var ranges = this.props.ranges;
 	      var type = this.props.type;
 	      var unit = this.props.unit;
+	      var averageUnit = type != "temperature" ? this.props.unit : '';
+	      //TODO: make the averaga data a property
+	      var averageData = data;
 	
 	      var containerClass = (0, _classnames2.default)({
 	        'circle-container': true,
@@ -20267,6 +20292,14 @@
 	        danger: ranges.isDanger(data),
 	        warning: ranges.isWarning(data)
 	      });
+	      var dotClass = (0, _classnames2.default)({
+	        'dot': true,
+	        'no-data': data === null,
+	        safe: ranges.isSafe(data),
+	        danger: ranges.isDanger(data),
+	        warning: ranges.isWarning(data)
+	      });
+	
 	      var statusText = ranges.statusText(data, type);
 	
 	      return _react2.default.createElement(
@@ -20298,11 +20331,34 @@
 	                unit
 	              ),
 	              _react2.default.createElement(
-	                'p',
+	                'h3',
 	                { className: 'condition' },
 	                statusText
 	              )
 	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'average' },
+	          _react2.default.createElement(
+	            'h4',
+	            null,
+	            'Average for today '
+	          ),
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            _react2.default.createElement(
+	              'span',
+	              { className: dotClass },
+	              '·'
+	            ),
+	            ' ',
+	            averageData,
+	            dataUnit,
+	            ' ',
+	            averageUnit
 	          )
 	        )
 	      );
@@ -20417,7 +20473,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".circles {\n  display: -ms-flexbox;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-flex-direction: row;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -webkit-flex-wrap: wrap;\n  -ms-flex-wrap: wrap;\n  flex-wrap: wrap;\n  -webkit-justify-content: space-around;\n  -ms-flex-pack: distribute;\n  justify-content: space-around;\n  -webkit-align-content: space-between;\n  -ms-flex-line-pack: justify;\n  align-content: space-between;\n  -webkit-align-items: center;\n  -ms-flex-align: center;\n  align-items: center; }\n\n.circle-container {\n  -webkit-flex: 0 1 auto;\n  -ms-flex: 0 1 auto;\n  flex: 0 1 auto;\n  -webkit-align-self: auto;\n  -ms-flex-item-align: auto;\n  align-self: auto;\n  text-align: center;\n  margin: 0 0 0px; }\n\n.outer-circle {\n  position: relative;\n  border-radius: 50%;\n  box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.26);\n  margin: auto;\n  height: 180px;\n  width: 180px; }\n  @media screen and (min-width: 992px) {\n    .outer-circle {\n      height: 220px;\n      width: 220px; } }\n  @media screen and (min-width: 1200px) {\n    .outer-circle {\n      height: 260px;\n      width: 260px; } }\n\n.circle {\n  position: absolute;\n  border-radius: 50%;\n  display: inline-block;\n  width: 90%;\n  height: 90%;\n  margin: auto;\n  top: 5%;\n  left: 5%;\n  line-height: 1.3;\n  z-index: 10; }\n  .circle .text {\n    margin-top: 30%;\n    text-align: center;\n    z-index: 2;\n    position: relative; }\n  .circle:before, .circle:after {\n    z-index: 1;\n    position: absolute;\n    content: '';\n    border-radius: 50%;\n    display: inline-block;\n    width: 94%;\n    height: 94%;\n    background-color: #fff;\n    left: 3%;\n    top: 3%;\n    transform: scale(1); }\n  .circle:after {\n    z-index: 1;\n    animation: beat 1.25s infinite alternate;\n    transform-origin: center; }\n    .warning .circle:after {\n      animation: beatwarning .8s infinite alternate; }\n    .danger .circle:after {\n      animation: beatdanger .5s infinite alternate; }\n  .circle:before {\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    z-index: 0;\n    background: silver;\n    animation: beat 1.25s infinite alternate;\n    transform-origin: center; }\n    .safe .circle:before {\n      background: #24fe00; }\n    .danger .circle:before {\n      background: #ff0012;\n      animation: beatdanger .5s infinite alternate; }\n    .warning .circle:before {\n      animation: beatwarning .8s infinite alternate;\n      background: #ffde00; }\n    .circle:before .no-data {\n      background: silver; }\n\n@keyframes beat {\n  to {\n    transform: scale(1.01);\n    box-shadow: 0px 0px 7px 0px #24fe00; } }\n\n@keyframes beatwarning {\n  to {\n    transform: scale(1.02);\n    box-shadow: 0px 0px 7px 0px #ffde00; } }\n\n@keyframes beatdanger {\n  to {\n    transform: scale(1.04);\n    box-shadow: 0px 0px 7px 0px  #ff0012; } }\n", ""]);
+	exports.push([module.id, ".circles {\n  display: -ms-flexbox;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-flex-direction: row;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -webkit-flex-wrap: wrap;\n  -ms-flex-wrap: wrap;\n  flex-wrap: wrap;\n  -webkit-justify-content: space-around;\n  -ms-flex-pack: distribute;\n  justify-content: space-around;\n  -webkit-align-content: space-between;\n  -ms-flex-line-pack: justify;\n  align-content: space-between;\n  -webkit-align-items: center;\n  -ms-flex-align: center;\n  align-items: center; }\n\n.circle-container {\n  -webkit-flex: 0 1 auto;\n  -ms-flex: 0 1 auto;\n  flex: 0 1 auto;\n  -webkit-align-self: auto;\n  -ms-flex-item-align: auto;\n  align-self: auto;\n  text-align: center;\n  margin: 0 0 30px; }\n\n.dot {\n  color: #24fe00; }\n  .dot.danger {\n    color: #ff0012; }\n  .dot.warning {\n    color: #ffde00; }\n\n.average {\n  margin-top: 40px; }\n\n.outer-circle {\n  position: relative;\n  border-radius: 50%;\n  box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.26);\n  margin: auto;\n  height: 180px;\n  width: 180px; }\n  @media screen and (min-width: 992px) {\n    .outer-circle {\n      height: 220px;\n      width: 220px; } }\n  @media screen and (min-width: 1200px) {\n    .outer-circle {\n      height: 260px;\n      width: 260px; } }\n\n.circle {\n  position: absolute;\n  border-radius: 50%;\n  display: inline-block;\n  width: 90%;\n  height: 90%;\n  margin: auto;\n  top: 5%;\n  left: 5%;\n  line-height: 1.3;\n  z-index: 10; }\n  .circle .text {\n    height: 100%;\n    padding-top: 15%;\n    text-align: center;\n    z-index: 2;\n    position: relative;\n    box-sizing: border-box; }\n  .circle .condition {\n    position: absolute;\n    bottom: 10%;\n    width: 100%; }\n  @media screen and (min-width: 992px) {\n    .circle .text {\n      padding-top: 30%; } }\n  .circle:before, .circle:after {\n    z-index: 1;\n    position: absolute;\n    content: '';\n    border-radius: 50%;\n    display: inline-block;\n    width: 94%;\n    height: 94%;\n    background-color: #fff;\n    left: 3%;\n    top: 3%;\n    transform: scale(1); }\n  .circle:after {\n    z-index: 1;\n    animation: beat 1.25s infinite alternate;\n    transform-origin: center; }\n    .warning .circle:after {\n      animation: beatwarning .8s infinite alternate; }\n    .danger .circle:after {\n      animation: beatdanger .5s infinite alternate; }\n  .circle:before {\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    z-index: 0;\n    background: silver;\n    animation: beat 1.25s infinite alternate;\n    transform-origin: center; }\n    .safe .circle:before {\n      background: #24fe00; }\n    .danger .circle:before {\n      background: #ff0012;\n      animation: beatdanger .5s infinite alternate; }\n    .warning .circle:before {\n      animation: beatwarning .8s infinite alternate;\n      background: #ffde00; }\n    .circle:before .no-data {\n      background: silver; }\n\n@keyframes beat {\n  to {\n    transform: scale(1.01);\n    box-shadow: 0px 0px 7px 0px #24fe00; } }\n\n@keyframes beatwarning {\n  to {\n    transform: scale(1.02);\n    box-shadow: 0px 0px 7px 0px #ffde00; } }\n\n@keyframes beatdanger {\n  to {\n    transform: scale(1.04);\n    box-shadow: 0px 0px 7px 0px  #ff0012; } }\n", ""]);
 	
 	// exports
 
@@ -20668,6 +20724,46 @@
 	}();
 
 	exports.default = TemperatureUnit;
+
+/***/ },
+/* 172 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(173);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(164)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./dashboard.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./dashboard.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 173 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(163)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".zones {\n  text-align: left;\n  width: 100%;\n  display: none; }\n  .zones h1 {\n    text-transform: uppercase;\n    font-family: 'FuturaPT-Bold'; }\n", ""]);
+	
+	// exports
+
 
 /***/ }
 /******/ ]);

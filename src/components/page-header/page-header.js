@@ -6,7 +6,7 @@ export default class PageHeader extends Component {
   render() {
     return (
       <div className="page-header">
-        <h1>{this.props.title} <small>{this.props.subtitle}</small></h1>
+        <h1>{this.props.title} <span className="addition">{this.props.subtitle}</span></h1>
       </div>
     );
   }
