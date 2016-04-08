@@ -37,7 +37,7 @@ export default class Dashboard extends Component {
     const co2Ranges = new Ranges(300, 400, 700, 800);
     const temperatureRanges = new Ranges(19, 21, 24, 26);
     const humidityRanges = new Ranges(30, 40, 60, 70);
-    const noiseRanges = new Ranges(10, 30, 47, 68);
+    const noiseRanges = new Ranges(10, 30, 47, 49);
 
     const minimumTemperature = this.state.data.minimumTemperature;
     const maximumTemperature = this.state.data.maximumTemperature;

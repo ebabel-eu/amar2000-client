@@ -7,7 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Amar2000 Dashboard</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:100,400|Open+Sans:100,400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" type="text/css" href="/css/font.css">
   <link rel="stylesheet" type="text/css" href="/css/main.css">
 
   <!--<link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">-->
@@ -24,7 +25,7 @@
 
   <script src="//amar2000.azurewebsites.net/signalr/hubs"></script>
   <script type="text/javascript">
-      $(function () {
+    $(function () {
         var climate = $.connection.climateHub;
         
         climate.client.updateZones = function (zones) {
