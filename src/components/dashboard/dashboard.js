@@ -3,9 +3,12 @@ import React, { Component } from 'react';
 import PageHeader from '../page-header/page-header';
 import Panel from '../panel/panel';
 import DataFetcher from './data-fetcher.js';
+import DataSyncer from './data-syncer.js';
 import Ranges from './ranges.js';
 import SplashScreen from './splashscreen';
 import TemperatureUnit from './temperature-unit.js';
+
+import USE_CAPTURE from '../../constants.js';
 
 import './dashboard.scss';
 
@@ -13,15 +16,17 @@ export default class Dashboard extends Component {
   constructor() {
     super();
     this.dataFetcher = new DataFetcher('//amar2000.azurewebsites.net/api/climate');
+    this.dataSyncer = new DataSyncer('//amar2000.azurewebsites.net/signalr/hubs');
     this.state = {
       data: {
         co2: null,
         temperature: null,
         humidity: null,
-        noise: null
-      }
+        noise: null,
+      },
     };
   }
+
   componentWillMount() {
     this.dataFetcher.fetch()
       .then(data => {
@@ -32,6 +37,19 @@ export default class Dashboard extends Component {
       .catch(error => {
         throw new Error(error);
       });
+  }
+
+  componentDidMount() {
+    document.addEventListener('sync-data', this.syncData.bind(this), USE_CAPTURE);
+
+    this.dataSyncer.start();
+  }
+
+  syncData(input) {
+    const data = input.detail.result;
+    this.setState({
+      data,
+    });
   }
 
   render() {
@@ -47,28 +65,28 @@ export default class Dashboard extends Component {
     const temperatureUnit = new TemperatureUnit(minimumTemperature, maximumTemperature);
     const temperatureUnitText = temperatureUnit.getText();
 
-    if (data.co2 !== null ) {
+    if (data.co2 !== null) {
       return (
         <div className="container">
-            <PageHeader title="Zone 1" subtitle="Circle A" />
+          <PageHeader title="Zone 1" subtitle="Circle A" />
           <div className="circles">
             <Panel title="CO2" type="co2" unit="ppm"
               data={this.state.data.co2} ranges={co2Ranges}
-            />
+              />
             <Panel title="Temperature" type="temperature" unit={temperatureUnitText}
               data={this.state.data.temperature} ranges={temperatureRanges}
               dataUnit="°"
-            />
+              />
             <Panel title="Humidity" type="humidity" unit="%"
               data={this.state.data.humidity} ranges={humidityRanges}
-            />
+              />
             <Panel title="Noise" type="noise" unit="dB"
               data={this.state.data.noise} ranges={noiseRanges}
-            />
+              />
           </div>
           <div className="zones">
             <h1>Condition Zones</h1>
-            <span>zone1 <span className="dot">&middot;</span> Normal</span>
+            <span>zone1 <span className="dot">&middot; </span> Normal</span>
           </div>
         </div>
       );

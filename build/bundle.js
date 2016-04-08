@@ -19689,15 +19689,27 @@
 	
 	var _dataFetcher2 = _interopRequireDefault(_dataFetcher);
 	
-	var _ranges = __webpack_require__(170);
+	var _dataSyncer = __webpack_require__(171);
+	
+	var _dataSyncer2 = _interopRequireDefault(_dataSyncer);
+	
+	var _ranges = __webpack_require__(173);
 	
 	var _ranges2 = _interopRequireDefault(_ranges);
 	
-	var _temperatureUnit = __webpack_require__(171);
+	var _splashscreen = __webpack_require__(174);
+	
+	var _splashscreen2 = _interopRequireDefault(_splashscreen);
+	
+	var _temperatureUnit = __webpack_require__(177);
 	
 	var _temperatureUnit2 = _interopRequireDefault(_temperatureUnit);
 	
-	__webpack_require__(172);
+	var _constants = __webpack_require__(178);
+	
+	var _constants2 = _interopRequireDefault(_constants);
+	
+	__webpack_require__(179);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -19716,6 +19728,7 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Dashboard).call(this));
 	
 	    _this.dataFetcher = new _dataFetcher2.default('//amar2000.azurewebsites.net/api/climate');
+	    _this.dataSyncer = new _dataSyncer2.default('//amar2000.azurewebsites.net/signalr/hubs');
 	    _this.state = {
 	      data: {
 	        co2: null,
@@ -19741,6 +19754,21 @@
 	      });
 	    }
 	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      document.addEventListener('sync-data', this.syncData.bind(this), _constants2.default);
+	
+	      this.dataSyncer.start();
+	    }
+	  }, {
+	    key: 'syncData',
+	    value: function syncData(input) {
+	      var data = input.detail.result;
+	      this.setState({
+	        data: data
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var data = this.state.data;
@@ -19755,7 +19783,7 @@
 	      var temperatureUnit = new _temperatureUnit2.default(minimumTemperature, maximumTemperature);
 	      var temperatureUnitText = temperatureUnit.getText();
 	
-	      if (data) {
+	      if (data.co2 !== null) {
 	        return _react2.default.createElement(
 	          'div',
 	          { className: 'container' },
@@ -19792,7 +19820,7 @@
 	              _react2.default.createElement(
 	                'span',
 	                { className: 'dot' },
-	                '·'
+	                '· '
 	              ),
 	              ' Normal'
 	            )
@@ -19803,11 +19831,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'container' },
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          'Loading data...'
-	        )
+	        _react2.default.createElement(_splashscreen2.default, null)
 	      );
 	    }
 	  }]);
@@ -20480,7 +20504,7 @@
 
 /***/ },
 /* 169 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -20489,6 +20513,12 @@
 	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _dataConverter = __webpack_require__(170);
+	
+	var _dataConverter2 = _interopRequireDefault(_dataConverter);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -20511,24 +20541,15 @@
 	          async: true,
 	          dataType: 'json'
 	        }).done(function (data) {
-	          var co2 = data[0].sensors[0].cO2;
-	          var temperature = data[0].sensors[0].temperature;
-	          var minimumTemperature = data[0].sensors[0].minimumTemperature;
-	          var maximumTemperature = data[0].sensors[0].maximumTemperature;
-	          var humidity = data[0].sensors[0].humidity;
-	          var noise = data[0].sensors[0].noise;
+	          var dataConverter = new _dataConverter2.default(data);
+	          var result = dataConverter.convert();
 	
-	          resolve({
-	            co2: co2,
-	            temperature: temperature,
-	            minimumTemperature: minimumTemperature,
-	            maximumTemperature: maximumTemperature,
-	            humidity: humidity,
-	            noise: noise
-	          });
+	          resolve(result);
 	        }).fail(function (jqXHR) {
 	          var error = jqXHR.error();
+	
 	          reject(error);
+	
 	          throw new Error(error);
 	        });
 	      });
@@ -20542,6 +20563,141 @@
 
 /***/ },
 /* 170 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	// Convert the input from the web api with front-end objects.
+	
+	var DataConverter = function () {
+	  function DataConverter(input) {
+	    _classCallCheck(this, DataConverter);
+	
+	    this.input = input;
+	  }
+	
+	  _createClass(DataConverter, [{
+	    key: "convert",
+	    value: function convert() {
+	      var result = {
+	        co2: this.input[0].sensors[0].cO2,
+	        temperature: this.input[0].sensors[0].temperature,
+	        minimumTemperature: this.input[0].sensors[0].minimumTemperature,
+	        maximumTemperature: this.input[0].sensors[0].maximumTemperature,
+	        humidity: this.input[0].sensors[0].humidity,
+	        noise: this.input[0].sensors[0].noise
+	      };
+	
+	      return result;
+	    }
+	  }]);
+	
+	  return DataConverter;
+	}();
+
+	exports.default = DataConverter;
+
+/***/ },
+/* 171 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _dataConverter = __webpack_require__(170);
+	
+	var _dataConverter2 = _interopRequireDefault(_dataConverter);
+	
+	var _raiseEvent = __webpack_require__(172);
+	
+	var _raiseEvent2 = _interopRequireDefault(_raiseEvent);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var DataSyncer = function () {
+	  function DataSyncer(url) {
+	    _classCallCheck(this, DataSyncer);
+	
+	    this.climate = $.connection.climateHub;
+	    $.connection.hub.url = url;
+	    $.connection.hub.start({ withCredentials: false });
+	  }
+	
+	  _createClass(DataSyncer, [{
+	    key: 'start',
+	    value: function start() {
+	      this.climate.client.updateZones = function (zones) {
+	        var dataConverter = new _dataConverter2.default(zones);
+	        var result = dataConverter.convert();
+	
+	        // Raise an event so that other components listening
+	        // for this will be able to update their state.
+	        (0, _raiseEvent2.default)('sync-data', { result: result });
+	      };
+	    }
+	  }]);
+	
+	  return DataSyncer;
+	}();
+
+	exports.default = DataSyncer;
+
+/***/ },
+/* 172 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = raiseEvent;
+	function raiseEvent(eventName, detail) {
+	  var event = new CustomEvent(eventName, {
+	    detail: detail
+	  });
+	
+	  document.dispatchEvent(event);
+	}
+	
+	// IE polyfill for CustomEvent.
+	try {
+	  new window.CustomEvent('test');
+	} catch (e) {
+	  var _CustomEvent = function _CustomEvent(event, params) {
+	    params = params || {
+	      bubbles: false,
+	      cancelable: false,
+	      detail: undefined
+	    };
+	
+	    var evt = document.createEvent('CustomEvent');
+	    evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+	
+	    return evt;
+	  };
+	
+	  _CustomEvent.prototype = window.Event.prototype;
+	  window.CustomEvent = _CustomEvent; // expose definition to window
+	}
+
+/***/ },
+/* 173 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -20688,7 +20844,124 @@
 	exports.default = Ranges;
 
 /***/ },
-/* 171 */
+/* 174 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	__webpack_require__(175);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var SplashScreen = function (_Component) {
+	  _inherits(SplashScreen, _Component);
+	
+	  function SplashScreen() {
+	    _classCallCheck(this, SplashScreen);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(SplashScreen).apply(this, arguments));
+	  }
+	
+	  _createClass(SplashScreen, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'splashloader safe' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'outer-circle' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'circle' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'text' },
+	              _react2.default.createElement(
+	                'h1',
+	                null,
+	                'AMAR ',
+	                _react2.default.createElement(
+	                  'span',
+	                  null,
+	                  '2000'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'p',
+	                { className: 'unit' },
+	                'Everything is okay'
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return SplashScreen;
+	}(_react.Component);
+
+	exports.default = SplashScreen;
+
+/***/ },
+/* 175 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(176);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(164)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./splashscreen.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./splashscreen.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 176 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(163)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 177 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -20726,13 +20999,26 @@
 	exports.default = TemperatureUnit;
 
 /***/ },
-/* 172 */
+/* 178 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// All constants are gathered here.
+	
+	var USE_CAPTURE = exports.USE_CAPTURE = false; // Event listening capture.
+
+/***/ },
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(173);
+	var content = __webpack_require__(180);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(164)(content, {});
@@ -20752,7 +21038,7 @@
 	}
 
 /***/ },
-/* 173 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(163)();

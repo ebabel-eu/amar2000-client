@@ -1,3 +1,5 @@
+import DataConverter from './data-converter.js';
+
 export default class DataFetcher {
 
   constructor(endpoint) {
@@ -13,25 +15,16 @@ export default class DataFetcher {
         dataType: 'json',
       })
         .done(data => {
-          const co2 = data[0].sensors[0].cO2;
-          const temperature = data[0].sensors[0].temperature;
-          const minimumTemperature = data[0].sensors[0].minimumTemperature;
-          const maximumTemperature = data[0].sensors[0].maximumTemperature;
-          const humidity = data[0].sensors[0].humidity;
-          const noise = data[0].sensors[0].noise;
+          const dataConverter = new DataConverter(data);
+          const result = dataConverter.convert();
 
-          resolve({
-            co2,
-            temperature,
-            minimumTemperature,
-            maximumTemperature,
-            humidity,
-            noise,
-          });
+          resolve(result);
         })
         .fail(jqXHR => {
           const error = jqXHR.error();
+
           reject(error);
+
           throw new Error(error);
         });
     });
