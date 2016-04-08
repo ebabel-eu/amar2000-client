@@ -5,6 +5,10 @@ export default class TemperatureUnit {
   }
 
   getText() {
-    return `${this.minimumTemperature}\xB0 ${this.maximumTemperature}\xB0`;
+    if (this.minimumTemperature && this.maximumTemperature) {
+      return `\u2193${this.minimumTemperature}\xB0 \u2191${this.maximumTemperature}\xB0`;
+    }
+
+    return '';
   }
 }
