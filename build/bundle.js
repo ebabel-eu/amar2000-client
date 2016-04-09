@@ -19711,9 +19711,11 @@
 	
 	var _constants = __webpack_require__(179);
 	
-	var _constants2 = _interopRequireDefault(_constants);
+	var _ = _interopRequireWildcard(_constants);
 	
 	__webpack_require__(180);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -19759,7 +19761,7 @@
 	        });
 	      }, 5000);
 	
-	      document.addEventListener('sync-data', this.syncData.bind(this), _constants2.default);
+	      document.addEventListener('sync-data', this.syncData.bind(this), _.USE_CAPTURE);
 	
 	      this.dataSyncer.start();
 	    }
@@ -19776,10 +19778,13 @@
 	    value: function render() {
 	      var data = this.state.data;
 	
-	      var co2Ranges = new _ranges2.default(_constants2.default, _constants2.default, _constants2.default, _constants2.default);
-	      var temperatureRanges = new _ranges2.default(_constants2.default, _constants2.default, _constants2.default, _constants2.default);
-	      var humidityRanges = new _ranges2.default(_constants2.default, _constants2.default, _constants2.default, _constants2.default);
-	      var noiseRanges = new _ranges2.default(_constants2.default, _constants2.default, _constants2.default, _constants2.default);
+	      var co2Ranges = new _ranges2.default(_.CO2_LOWEST, _.CO2_LOW, _.CO2_HIGH, _.CO2_HIGHEST);
+	
+	      var temperatureRanges = new _ranges2.default(_.TEMPERATURE_LOWEST, _.TEMPERATURE_LOW, _.TEMPERATURE_HIGH, _.TEMPERATURE_HIGHEST);
+	
+	      var humidityRanges = new _ranges2.default(_.HUMIDITY_LOWEST, _.HUMIDITY_LOW, _.HUMIDITY_HIGH, _.HUMIDITY_HIGHEST);
+	
+	      var noiseRanges = new _ranges2.default(_.NOISE_LOWEST, _.NOISE_LOW, _.NOISE_HIGH, _.NOISE_HIGHEST);
 	
 	      var minimumTemperature = this.state.data.minimumTemperature;
 	      var maximumTemperature = this.state.data.maximumTemperature;

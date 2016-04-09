@@ -9,23 +9,7 @@ import SplashScreen from './splashscreen';
 import TemperatureUnit from './temperature-unit.js';
 import TimerMixin from 'react-timer-mixin';
 
-import USE_CAPTURE from '../../constants.js';
-import CO2_LOWEST from '../../constants.js';
-import CO2_LOW from '../../constants.js';
-import CO2_HIGH from '../../constants.js';
-import CO2_HIGHEST from '../../constants.js';
-import TEMPERATURE_LOWEST from '../../constants.js';
-import TEMPERATURE_LOW from '../../constants.js';
-import TEMPERATURE_HIGH from '../../constants.js';
-import TEMPERATURE_HIGHEST from '../../constants.js';
-import HUMIDITY_LOWEST from '../../constants.js';
-import HUMIDITY_LOW from '../../constants.js';
-import HUMIDITY_HIGH from '../../constants.js';
-import HUMIDITY_HIGHEST from '../../constants.js';
-import NOISE_LOWEST from '../../constants.js';
-import NOISE_LOW from '../../constants.js';
-import NOISE_HIGH from '../../constants.js';
-import NOISE_HIGHEST from '../../constants.js';
+import * as _ from '../../constants.js';
 
 import './dashboard.scss';
 
@@ -57,7 +41,7 @@ export default class Dashboard extends Component {
         });
     }, 5000);
 
-    document.addEventListener('sync-data', this.syncData.bind(this), USE_CAPTURE);
+    document.addEventListener('sync-data', this.syncData.bind(this), _.USE_CAPTURE);
 
     this.dataSyncer.start();
   }
@@ -72,10 +56,33 @@ export default class Dashboard extends Component {
   render() {
     const data = this.state.data;
 
-    const co2Ranges = new Ranges(CO2_LOWEST, CO2_LOW, CO2_HIGH, CO2_HIGHEST);
-    const temperatureRanges = new Ranges(TEMPERATURE_LOWEST, TEMPERATURE_LOW, TEMPERATURE_HIGH, TEMPERATURE_HIGHEST);
-    const humidityRanges = new Ranges(HUMIDITY_LOWEST, HUMIDITY_LOW, HUMIDITY_HIGH, HUMIDITY_HIGHEST);
-    const noiseRanges = new Ranges(NOISE_LOWEST, NOISE_LOW, NOISE_HIGH, NOISE_HIGHEST);
+    const co2Ranges = new Ranges(
+      _.CO2_LOWEST,
+      _.CO2_LOW,
+      _.CO2_HIGH,
+      _.CO2_HIGHEST
+    );
+
+    const temperatureRanges = new Ranges(
+      _.TEMPERATURE_LOWEST,
+      _.TEMPERATURE_LOW,
+      _.TEMPERATURE_HIGH,
+      _.TEMPERATURE_HIGHEST
+    );
+
+    const humidityRanges = new Ranges(
+      _.HUMIDITY_LOWEST,
+      _.HUMIDITY_LOW,
+      _.HUMIDITY_HIGH,
+      _.HUMIDITY_HIGHEST
+    );
+
+    const noiseRanges = new Ranges(
+      _.NOISE_LOWEST,
+      _.NOISE_LOW,
+      _.NOISE_HIGH,
+      _.NOISE_HIGHEST
+    );
 
     const minimumTemperature = this.state.data.minimumTemperature;
     const maximumTemperature = this.state.data.maximumTemperature;
