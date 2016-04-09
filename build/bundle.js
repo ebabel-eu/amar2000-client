@@ -19776,10 +19776,10 @@
 	    value: function render() {
 	      var data = this.state.data;
 	
-	      var co2Ranges = new _ranges2.default(300, 400, 700, 800);
-	      var temperatureRanges = new _ranges2.default(19, 21, 24, 26);
-	      var humidityRanges = new _ranges2.default(30, 40, 60, 70);
-	      var noiseRanges = new _ranges2.default(10, 30, 47, 68);
+	      var co2Ranges = new _ranges2.default(_constants2.default, _constants2.default, _constants2.default, _constants2.default);
+	      var temperatureRanges = new _ranges2.default(_constants2.default, _constants2.default, _constants2.default, _constants2.default);
+	      var humidityRanges = new _ranges2.default(_constants2.default, _constants2.default, _constants2.default, _constants2.default);
+	      var noiseRanges = new _ranges2.default(_constants2.default, _constants2.default, _constants2.default, _constants2.default);
 	
 	      var minimumTemperature = this.state.data.minimumTemperature;
 	      var maximumTemperature = this.state.data.maximumTemperature;
@@ -21160,6 +21160,26 @@
 	// All constants are gathered here.
 	
 	var USE_CAPTURE = exports.USE_CAPTURE = false; // Event listening capture.
+	
+	var CO2_LOWEST = exports.CO2_LOWEST = 50;
+	var CO2_LOW = exports.CO2_LOW = 100;
+	var CO2_HIGH = exports.CO2_HIGH = 700;
+	var CO2_HIGHEST = exports.CO2_HIGHEST = 800;
+	
+	var TEMPERATURE_LOWEST = exports.TEMPERATURE_LOWEST = 19;
+	var TEMPERATURE_LOW = exports.TEMPERATURE_LOW = 21;
+	var TEMPERATURE_HIGH = exports.TEMPERATURE_HIGH = 24;
+	var TEMPERATURE_HIGHEST = exports.TEMPERATURE_HIGHEST = 26;
+	
+	var HUMIDITY_LOWEST = exports.HUMIDITY_LOWEST = 30;
+	var HUMIDITY_LOW = exports.HUMIDITY_LOW = 40;
+	var HUMIDITY_HIGH = exports.HUMIDITY_HIGH = 60;
+	var HUMIDITY_HIGHEST = exports.HUMIDITY_HIGHEST = 70;
+	
+	var NOISE_LOWEST = exports.NOISE_LOWEST = 10;
+	var NOISE_LOW = exports.NOISE_LOW = 30;
+	var NOISE_HIGH = exports.NOISE_HIGH = 47;
+	var NOISE_HIGHEST = exports.NOISE_HIGHEST = 68;
 
 /***/ },
 /* 180 */
