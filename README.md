@@ -1,6 +1,6 @@
 # AMAR2000 client
 
-[![wercker status](https://app.wercker.com/status/801fa0b25ec6c9b39b0d7a5fe2bbd000/s/master "wercker status")](https://app.wercker.com/project/bykey/801fa0b25ec6c9b39b0d7a5fe2bbd000)
+[![wercker status](https://app.wercker.com/status/801fa0b25ec6c9b39b0d7a5fe2bbd000/m/master "wercker status")](https://app.wercker.com/project/bykey/801fa0b25ec6c9b39b0d7a5fe2bbd000)
 
 Dashboard the environment data of an office and alerts when parameters enter unhealthy ranges.
 
