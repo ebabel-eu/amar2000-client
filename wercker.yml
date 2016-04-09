@@ -39,4 +39,4 @@ build:
     - script:
         name: build bundle with webpack
         code: |
-          webpack
+          ./node_modules/webpack/bin/webpack.js
