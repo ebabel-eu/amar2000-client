@@ -25,7 +25,7 @@ build:
     # A step that executes `npm install` command
     - npm-install
     # A step that executes `npm test` command
-    # - npm-test
+    - npm-test
 
     # A custom script step, name value is used in the UI
     # and the code value contains the command that get executed
@@ -34,3 +34,9 @@ build:
         code: |
           echo "node version $(node -v) running"
           echo "npm version $(npm -v) running"
+
+    # Webpack build.
+    - script:
+        name: build bundle with webpack
+        code: |
+          webpack
