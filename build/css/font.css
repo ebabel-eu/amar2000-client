@@ -29,11 +29,29 @@
 /* @import must be at top of file, otherwise CSS will not work */
 @import url("//hello.myfonts.net/count/30924f");
 
+@font-face {
+  font-family: 'FuturaPT-Book';
+  src: url('webfonts/30924F_0_0.eot');
+  src: url('webfonts/30924F_0_0.eot?#iefix') format('embedded-opentype'),
+    url('webfonts/30924F_0_0.woff2') format('woff2'),
+    url('webfonts/30924F_0_0.woff') format('woff'),
+    url('webfonts/30924F_0_0.ttf') format('truetype');
+}
 
-@font-face {font-family: 'FuturaPT-Book';src: url('webfonts/30924F_0_0.eot');src: url('webfonts/30924F_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/30924F_0_0.woff2') format('woff2'),url('webfonts/30924F_0_0.woff') format('woff'),url('webfonts/30924F_0_0.ttf') format('truetype');}
+@font-face {
+  font-family: 'FuturaPT-Light';
+  src: url('webfonts/30924F_1_0.eot');
+  src: url('webfonts/30924F_1_0.eot?#iefix') format('embedded-opentype'),
+    url('webfonts/30924F_1_0.woff2') format('woff2'),
+    url('webfonts/30924F_1_0.woff') format('woff'),
+    url('webfonts/30924F_1_0.ttf') format('truetype');
+}
 
-
-@font-face {font-family: 'FuturaPT-Light';src: url('webfonts/30924F_1_0.eot');src: url('webfonts/30924F_1_0.eot?#iefix') format('embedded-opentype'),url('webfonts/30924F_1_0.woff2') format('woff2'),url('webfonts/30924F_1_0.woff') format('woff'),url('webfonts/30924F_1_0.ttf') format('truetype');}
-
-
-@font-face {font-family: 'FuturaPT-Bold';src: url('webfonts/30924F_2_0.eot');src: url('webfonts/30924F_2_0.eot?#iefix') format('embedded-opentype'),url('webfonts/30924F_2_0.woff2') format('woff2'),url('webfonts/30924F_2_0.woff') format('woff'),url('webfonts/30924F_2_0.ttf') format('truetype');}
+@font-face {
+  font-family: 'FuturaPT-Bold';
+  src: url('webfonts/30924F_2_0.eot');
+  src: url('webfonts/30924F_2_0.eot?#iefix') format('embedded-opentype'),
+    url('webfonts/30924F_2_0.woff2') format('woff2'),
+    url('webfonts/30924F_2_0.woff') format('woff'),
+    url('webfonts/30924F_2_0.ttf') format('truetype');
+}
