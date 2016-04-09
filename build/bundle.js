@@ -19879,7 +19879,7 @@
 	              ),
 	              ' ',
 	              _react2.default.createElement('span', { className: 'dot warning' }),
-	              'CO² average'
+	              'CO₂ average'
 	            )
 	          )
 	        );
@@ -20425,7 +20425,8 @@
 	          _react2.default.createElement(
 	            'h4',
 	            null,
-	            'Average for today '
+	            'Average ',
+	            this.props.title
 	          ),
 	          _react2.default.createElement(
 	            'h2',
@@ -20783,10 +20784,10 @@
 	      switch (type) {
 	        case 'co2':
 	          if (this.isTooLow(data)) {
-	            text = 'insufficient co2';
+	            text = 'insufficient CO₂';
 	          }
 	          if (this.isLow(data)) {
-	            text = 'low co2';
+	            text = 'low CO₂';
 	          }
 	          if (this.isSafe(data)) {
 	            text = 'normal';

@@ -119,7 +119,7 @@ export default class Dashboard extends Component {
             <div className="zoneblock">
               <span className="zone">zone4</span> <span className="dot"></span>Normal <br/>
               <span className="zone">zone5</span> <span className="dot warning"></span> Normal <br/>
-              <span className="zone">zone6</span> <span className="dot warning"></span>CO&sup2; average
+              <span className="zone">zone6</span> <span className="dot warning"></span>CO₂ average
             </div>
           </div>
         </div>

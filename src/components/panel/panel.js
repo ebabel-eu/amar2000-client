@@ -45,7 +45,7 @@ export default class Panel extends Component {
           </div>
         </div>
         <div className="average">
-          <h4>Average for today </h4>
+          <h4>Average {this.props.title}</h4>
           <h2><span className={dotClass}>{averageData}{dataUnit} {averageUnit}</span></h2>
         </div>
       </div>
