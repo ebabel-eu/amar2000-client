@@ -94,7 +94,7 @@ Note: all deployments can be rollbacked on the Heroku web app.
 
 ## Release history
 
-### v1.0.1 Refactoring and improvements
+### v1.0.1 Refactoring and improvements (not released and tagged yet)
 - creation of a staging environment
 - post install step in package.json to run webpack
 - reafactoring of dev and live dependencies to fit the post install step
