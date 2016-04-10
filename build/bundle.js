@@ -20902,8 +20902,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	exports.default = SplashScreen;
 	
 	var _react = __webpack_require__(1);
 	
@@ -20913,64 +20912,41 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var SplashScreen = function (_Component) {
-	  _inherits(SplashScreen, _Component);
-	
-	  function SplashScreen() {
-	    _classCallCheck(this, SplashScreen);
-	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(SplashScreen).apply(this, arguments));
-	  }
-	
-	  _createClass(SplashScreen, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
+	function SplashScreen() {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'splashloader safe' },
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'outer-circle' },
+	      _react2.default.createElement(
 	        'div',
-	        { className: 'splashloader safe' },
+	        { className: 'circle' },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'outer-circle' },
+	          { className: 'text' },
 	          _react2.default.createElement(
-	            'div',
-	            { className: 'circle' },
+	            'h1',
+	            null,
+	            'AMAR ',
 	            _react2.default.createElement(
-	              'div',
-	              { className: 'text' },
-	              _react2.default.createElement(
-	                'h1',
-	                null,
-	                'AMAR ',
-	                _react2.default.createElement(
-	                  'span',
-	                  { className: 'addition' },
-	                  '2000'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'p',
-	                { className: 'condition' },
-	                'Everything ',
-	                _react2.default.createElement('br', null),
-	                ' is okay'
-	              )
+	              'span',
+	              { className: 'addition' },
+	              '2000'
 	            )
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'condition' },
+	            'Everything ',
+	            _react2.default.createElement('br', null),
+	            ' is okay'
 	          )
 	        )
-	      );
-	    }
-	  }]);
-	
-	  return SplashScreen;
-	}(_react.Component);
-
-	exports.default = SplashScreen;
+	      )
+	    )
+	  );
+	}
 
 /***/ },
 /* 175 */
