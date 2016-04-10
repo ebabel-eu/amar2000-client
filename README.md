@@ -57,7 +57,7 @@ will be deployed to Heroku staging environment.
 
 Browse to https://amar2000-client-staging.herokuapp.com/
 
-## deploy to Heroku (production)
+## Deploy to Heroku (production)
 
 There are two methods to deploy to production:
 
