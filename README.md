@@ -4,7 +4,7 @@ Dashboard the environment data of an office and alerts when parameters enter unh
 
 ## Install
 
-Note: npm install doesn't work because Windows can't understand running a script with an initial dot. 
+Note: npm install causes an error on Windows because that OS can't understand running a script with an initial dot. 
 See https://github.com/ebabel-eu/amar2000-client/issues/17 for more information.
 
 ```
@@ -97,10 +97,12 @@ Note: all deployments can be rollbacked on the Heroku web app.
 
 ## Release history
 
-### v1.0.1 Refactoring and improvements (not released and tagged yet)
+Currently being developed: v1.0.1
+
+### v1.0.1 Refactoring and improvements (future release)
 - creation of a staging environment
 - post install step in package.json to run webpack
-- reafactoring of dev and live dependencies to fit the post install step
+- refactoring of dev and live dependencies to fit the post install step
 - removal of bundle from repos
 - font name refactoring
 - robots.txt file
