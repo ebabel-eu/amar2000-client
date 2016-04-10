@@ -1,0 +1,13 @@
+install:
+  - npm install
+
+# Blacklisted branches: may not trigger a Travis build and deployment to Heroku.
+branches:
+  except:
+    # match any branch starting with "bug/".
+    - /^bug\/.*$/
+
+# Whitelisted branches: can trigger a Travis build and deployment to Heroku.
+branches:
+  only:
+    - feature/travis-setup
