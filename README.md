@@ -86,7 +86,8 @@ Browse to https://amar2000-client.herokuapp.com/
 
 Note: all deployments can be rollbacked on the Heroku web app.
 
-## Usefull links:
-https://dev.netatmo.com/doc/authentication/usercred
-https://github.com/fraserxu/react-chartist
-http://www.buroepn.nl/ventilatie/co2-en-het-vergaderruimte-effect
+## Useful links:
+
+- https://dev.netatmo.com/doc/authentication/usercred
+- https://github.com/fraserxu/react-chartist
+- http://www.buroepn.nl/ventilatie/co2-en-het-vergaderruimte-effect
