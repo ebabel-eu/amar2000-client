@@ -4,6 +4,9 @@ Dashboard the environment data of an office and alerts when parameters enter unh
 
 ## Install
 
+Note: npm install doesn't work because Windows can't understand running a script with an initial dot. 
+See https://github.com/ebabel-eu/amar2000-client/issues/17 for more information.
+
 ```
 npm install
 npm install -g http-server
