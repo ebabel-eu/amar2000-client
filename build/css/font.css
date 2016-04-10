@@ -31,27 +31,27 @@
 
 @font-face {
   font-family: 'FuturaPT-Book';
-  src: url('webfonts/30924F_0_0.eot');
-  src: url('webfonts/30924F_0_0.eot?#iefix') format('embedded-opentype'),
-    url('webfonts/30924F_0_0.woff2') format('woff2'),
-    url('webfonts/30924F_0_0.woff') format('woff'),
-    url('webfonts/30924F_0_0.ttf') format('truetype');
+  src: url('webfonts/futura-pt-book.eot');
+  src: url('webfonts/futura-pt-book.eot?#iefix') format('embedded-opentype'),
+    url('webfonts/futura-pt-book.woff2') format('woff2'),
+    url('webfonts/futura-pt-book.woff') format('woff'),
+    url('webfonts/futura-pt-book.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'FuturaPT-Light';
-  src: url('webfonts/30924F_1_0.eot');
-  src: url('webfonts/30924F_1_0.eot?#iefix') format('embedded-opentype'),
-    url('webfonts/30924F_1_0.woff2') format('woff2'),
-    url('webfonts/30924F_1_0.woff') format('woff'),
-    url('webfonts/30924F_1_0.ttf') format('truetype');
+  src: url('webfonts/futura-pt-light.eot');
+  src: url('webfonts/futura-pt-light.eot?#iefix') format('embedded-opentype'),
+    url('webfonts/futura-pt-light.woff2') format('woff2'),
+    url('webfonts/futura-pt-light.woff') format('woff'),
+    url('webfonts/futura-pt-light.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'FuturaPT-Bold';
-  src: url('webfonts/30924F_2_0.eot');
-  src: url('webfonts/30924F_2_0.eot?#iefix') format('embedded-opentype'),
-    url('webfonts/30924F_2_0.woff2') format('woff2'),
-    url('webfonts/30924F_2_0.woff') format('woff'),
-    url('webfonts/30924F_2_0.ttf') format('truetype');
+  src: url('webfonts/futura-pt-bold.eot');
+  src: url('webfonts/futura-pt-bold.eot?#iefix') format('embedded-opentype'),
+    url('webfonts/futura-pt-bold.woff2') format('woff2'),
+    url('webfonts/futura-pt-bold.woff') format('woff'),
+    url('webfonts/futura-pt-bold.ttf') format('truetype');
 }
