@@ -1,6 +1,6 @@
 {
   "name": "amar2000-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Dashboard the environment data of an office and alerts when parameters enter unhealthy ranges.",
   "main": "index.js",
   "scripts": {
