@@ -1,8 +1,16 @@
 language: node_js
 node_js:
   - "4"
+
+before_install:
+  - sudo apt-get -qq update
 install:
   - npm install
+  - npm install -g webpack
+  - npm install -g eslint
+  - npm install -g eslint-config-airbnb
+  - npm install -g eslint-plugin-react
+  - npm install -g babel-eslint
 
 # Blacklisted branches: may not trigger a Travis build and deployment to Heroku.
 branches:
