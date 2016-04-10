@@ -111,15 +111,21 @@ export default class Dashboard extends Component {
           <div className="zones">
             <h1>Condition Zones</h1>
             <div className="zoneblock">
-              <span className="zone">zone1</span> <span className="dot"></span>Normal <br/>
-              <span className="zone">zone2</span> <span className="dot warning"></span> Humidity high <br/>
-              <span className="zone">zone3</span> <span className="dot danger"></span>Bad
+              <span className="zone">zone1</span>
+              <span className="dot"></span> Normal <br />
+              <span className="zone">zone2</span>
+              <span className="dot warning"></span> Humidity high <br />
+              <span className="zone">zone3</span>
+              <span className="dot danger"></span> Bad
             </div>
 
             <div className="zoneblock">
-              <span className="zone">zone4</span> <span className="dot"></span>Normal <br/>
-              <span className="zone">zone5</span> <span className="dot warning"></span> Normal <br/>
-              <span className="zone">zone6</span> <span className="dot warning"></span>CO₂ average
+              <span className="zone">zone4</span>
+              <span className="dot"></span> Normal <br />
+              <span className="zone">zone5</span>
+              <span className="dot warning"></span> Normal <br />
+              <span className="zone">zone6</span>
+              <span className="dot warning"></span> CO₂ average
             </div>
           </div>
         </div>
