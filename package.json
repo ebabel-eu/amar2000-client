@@ -43,7 +43,7 @@
     "karma-jasmine": "0.3.8",
     "karma-phantomjs-launcher": "1.0.0",
     "karma-webpack": "1.7.0",
-    "left-pad": "https://github.com/stevemao/left-pad.git",
+    "left-pad": "azer/left-pad",
     "node-sass": "3.4.2",
     "phantomjs-prebuilt": "2.1.7",
     "promise-polyfill": "4.0.3",
