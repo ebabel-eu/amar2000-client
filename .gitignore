@@ -48,7 +48,3 @@ coverage
 *.ipr
 *.iws
 .idea/
-
-# Custom for AMAR2000 code
-build/bundle.js
-build/bundle.js.map
