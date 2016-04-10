@@ -91,3 +91,18 @@ Note: all deployments can be rollbacked on the Heroku web app.
 - https://dev.netatmo.com/doc/authentication/usercred
 - https://github.com/fraserxu/react-chartist
 - http://www.buroepn.nl/ventilatie/co2-en-het-vergaderruimte-effect
+
+## Release history
+
+### v1.0.1 Refactoring and improvements
+- creation of a staging environment
+- post install step in package.json to run webpack
+- reafactoring of dev and live dependencies to fit the post install step
+- removal of bundle from repos
+- font name refactoring
+- robots.txt file
+- refactoring of Javascript to meet linting rules
+- readme documentation updated
+
+### v1.0.0 First release from initial Hackaton
+- initial mvp version
