@@ -2,7 +2,7 @@
 
 Dashboard the environment data of an office and alerts when parameters enter unhealthy ranges.
 
-## install
+## Install
 
 ```
 npm install
@@ -14,31 +14,31 @@ npm install -g eslint-plugin-react
 npm install -g babel-eslint
 ```
 
-## build
+## Build
 
 ```
 webpack
 ```
 
-### build continuously
+### Build continuously
 
 ```
 webpack -w
 ```
 
-## unit test
+## Unit test
 
 ```
 npm test
 ```
 
-### unit test continuously
+### Unit test continuously
 
 ```
 npm run test-watch
 ```
 
-## run locally
+## Run locally
 
 ```
 http-server build/
@@ -46,13 +46,29 @@ http-server build/
 
 Browse to http://localhost:8080 or 8081
 
-## deploy to Heroku (production)
+## Deploy to Heroku (staging)
 
-Any code merged into master and pushed to the remote repository on Github 
-will be deployed to Heroku.
+Any code merged into the develop branch and pushed to the Github repository
+will be deployed to Heroku staging environment.
 
 ```
-[ master branch ] => [ heroku instance ]
+[ develop branch ] => [ Heroku production ]
+```
+
+Browse to https://amar2000-client-staging.herokuapp.com/
+
+## deploy to Heroku (production)
+
+There are two methods to deploy to production:
+
+1 - Promote the code that has been deployed to staging 
+to the production environment by using the Heroku web app.
+
+2 - Any code merged into the master branch and pushed to the Github repository 
+will be deployed to Heroku production environment.
+
+```
+[ master branch ] => [ Heroku production ]
 ```
 
 Create a tag with a version vX.Y.Z, following the canonical versioning rules.
@@ -67,6 +83,8 @@ git push --tags
 ```
 
 Browse to https://amar2000-client.herokuapp.com/
+
+Note: all deployments can be rollbacked on the Heroku web app.
 
 ## Usefull links:
 https://dev.netatmo.com/doc/authentication/usercred
