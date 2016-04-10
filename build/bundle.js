@@ -20778,7 +20778,7 @@
 	      switch (type) {
 	        case 'co2':
 	          if (this.isTooLow(data)) {
-	            text = 'insufficient CO₂';
+	            text = 'very low CO₂';
 	          }
 	          if (this.isLow(data)) {
 	            text = 'low CO₂';
@@ -20793,6 +20793,7 @@
 	            text = 'open all windows';
 	          }
 	          break;
+	
 	        case 'temperature':
 	          if (this.isTooLow(data)) {
 	            text = 'too cold';
@@ -20810,6 +20811,7 @@
 	            text = 'too hot';
 	          }
 	          break;
+	
 	        case 'humidity':
 	          if (this.isTooLow(data)) {
 	            text = 'too dry';
@@ -20826,8 +20828,8 @@
 	          if (this.isTooHigh(data)) {
 	            text = 'too humid';
 	          }
-	
 	          break;
+	
 	        case 'noise':
 	          if (this.isTooLow(data)) {
 	            text = 'is anyone here?';
@@ -20845,6 +20847,7 @@
 	            text = 'too noisy';
 	          }
 	          break;
+	
 	        default:
 	          throw new Error('Unexpected type');
 	      }

@@ -11,12 +11,13 @@ export default class Ranges {
 
     switch (type) {
       case 'co2':
-        if (this.isTooLow(data)) { text = 'insufficient CO₂'; }
+        if (this.isTooLow(data)) { text = 'very low CO₂'; }
         if (this.isLow(data)) { text = 'low CO₂'; }
         if (this.isSafe(data)) { text = 'normal'; }
         if (this.isHigh(data)) { text = 'ventilate'; }
         if (this.isTooHigh(data)) { text = 'open all windows'; }
         break;
+
       case 'temperature':
         if (this.isTooLow(data)) { text = 'too cold'; }
         if (this.isLow(data)) { text = 'cold'; }
@@ -24,14 +25,15 @@ export default class Ranges {
         if (this.isHigh(data)) { text = 'hot'; }
         if (this.isTooHigh(data)) { text = 'too hot'; }
         break;
+
       case 'humidity':
         if (this.isTooLow(data)) { text = 'too dry'; }
         if (this.isLow(data)) { text = 'dry'; }
         if (this.isSafe(data)) { text = 'ideal'; }
         if (this.isHigh(data)) { text = 'humid'; }
         if (this.isTooHigh(data)) { text = 'too humid'; }
-
         break;
+
       case 'noise':
         if (this.isTooLow(data)) { text = 'is anyone here?'; }
         if (this.isLow(data)) { text = 'silent'; }
@@ -39,6 +41,7 @@ export default class Ranges {
         if (this.isHigh(data)) { text = 'noisy'; }
         if (this.isTooHigh(data)) { text = 'too noisy'; }
         break;
+
       default:
         throw new Error('Unexpected type');
     }
