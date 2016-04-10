@@ -48,10 +48,15 @@ http-server build/
 
 Browse to http://localhost:8080 or 8081
 
-## deploy to Heroky (production)
+## deploy to Heroku (production)
 
-Any code merged into master and push to the remote repository on Github 
-will be published to the Heroku server.
+Any code merged into master and pushed to the remote repository on Github 
+will be processed by the Wercker pipeline and, should unit tests pass,
+deployed to Heroku.
+
+```
+[ master branch ] => [ wercker pipeline ] => [ heroku instance ]
+```
 
 Browse to https://amar2000-client.herokuapp.com/
 
