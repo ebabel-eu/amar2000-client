@@ -1,6 +1,6 @@
 # AMAR2000 client
 
-Production on master branch: [![wercker status](https://app.wercker.com/status/801fa0b25ec6c9b39b0d7a5fe2bbd000/s/master "wercker status")](https://app.wercker.com/project/bykey/801fa0b25ec6c9b39b0d7a5fe2bbd000)
+[![Build Status](https://travis-ci.org/ebabel-eu/amar2000-client.svg?branch=master)](https://travis-ci.org/ebabel-eu/amar2000-client)
 
 Dashboard the environment data of an office and alerts when parameters enter unhealthy ranges.
 
