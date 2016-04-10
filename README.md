@@ -52,7 +52,7 @@ Any code merged into the develop branch and pushed to the Github repository
 will be deployed to Heroku staging environment.
 
 ```
-[ develop branch ] => [ Heroku production ]
+[ develop branch ] => [ Heroku staging ]
 ```
 
 Browse to https://amar2000-client-staging.herokuapp.com/
