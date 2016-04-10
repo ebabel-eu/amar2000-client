@@ -4,6 +4,7 @@
   "description": "Dashboard the environment data of an office and alerts when parameters enter unhealthy ranges.",
   "main": "index.js",
   "scripts": {
+    "postinstall": "webpack --config ./webpack.config.js --progress --colors",
     "start": "node index.js",
     "test": "karma start --single-run",
     "test-watch": "karma start"
