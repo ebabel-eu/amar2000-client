@@ -58,6 +58,17 @@ deployed to Heroku.
 [ master branch ] => [ wercker pipeline ] => [ heroku instance ]
 ```
 
+Create a tag with a version vX.Y.Z, following the canonical versioning rules.
+
+Make sure the package.json file is changed accordingly with the correct version before deploying to the master branch and tagging it.
+
+Example:
+
+```
+git tag -a v1.0.0 -m "Version deployed at the end of the Hackaton that launched this app."
+git push --tags
+```
+
 Browse to https://amar2000-client.herokuapp.com/
 
 ## Usefull links:
