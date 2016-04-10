@@ -1,7 +1,5 @@
 # AMAR2000 client
 
-[![Build Status](https://travis-ci.org/ebabel-eu/amar2000-client.svg?branch=master)](https://travis-ci.org/ebabel-eu/amar2000-client)
-
 Dashboard the environment data of an office and alerts when parameters enter unhealthy ranges.
 
 ## install
@@ -51,11 +49,10 @@ Browse to http://localhost:8080 or 8081
 ## deploy to Heroku (production)
 
 Any code merged into master and pushed to the remote repository on Github 
-will be processed by the Wercker pipeline and, should unit tests pass,
-deployed to Heroku.
+will be deployed to Heroku.
 
 ```
-[ master branch ] => [ wercker pipeline ] => [ heroku instance ]
+[ master branch ] => [ heroku instance ]
 ```
 
 Create a tag with a version vX.Y.Z, following the canonical versioning rules.
