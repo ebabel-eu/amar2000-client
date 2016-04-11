@@ -11,8 +11,8 @@ export default class Panel extends Component {
     const ranges = this.props.ranges;
     const type = this.props.type;
     const unit = this.props.unit;
-    const averageUnit = type != "temperature" ? this.props.unit : '';
-    //TODO: make the averaga data a property
+    const averageUnit = type !== 'temperature' ? this.props.unit : '';
+    // TODO: make the averaga data a property
     const averageData = data;
 
     const containerClass = classNames({
@@ -23,7 +23,7 @@ export default class Panel extends Component {
       warning: ranges.isWarning(data),
     });
     const dotClass = classNames({
-      'dot': true,
+      dot: true,
       'no-data': data === null,
       safe: ranges.isSafe(data),
       danger: ranges.isDanger(data),
