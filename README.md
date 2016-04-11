@@ -4,9 +4,6 @@ Dashboard the environment data of an office and alerts when parameters enter unh
 
 ## Install
 
-Note: npm install causes an error on Windows because that OS can't understand running a script with an initial dot. 
-See https://github.com/ebabel-eu/amar2000-client/issues/17 for more information.
-
 ```
 npm install
 npm install -g http-server
@@ -104,6 +101,7 @@ Currently being developed: v1.0.1
 - post install step in package.json to run webpack
 - refactoring of dev and live dependencies to fit the post install step
 - removal of bundle from repos
+- range parameters moved to constants.js instead of hardcoded magic numbers
 - font name refactoring
 - robots.txt file
 - refactoring of Javascript to meet linting rules
