@@ -86,6 +86,30 @@ Browse to https://amar2000-client.herokuapp.com/
 
 Note: all deployments can be rollbacked on the Heroku web app.
 
+## Visual Studio Code setup [optional]
+
+In your settings.json (User Settings), the following can be set to lint this project inline:
+
+```
+{
+  "jshint.enable": false,
+  "eslint.enable": true,
+	"editor.tabSize": 2
+}
+```
+
+You will also need to install the following plugins:
+
+```
+ext install eslint
+```
+
+Optionally, since this project is Wallaby enabled, you can install it:
+
+```
+ext install wallaby
+```
+
 ## Useful links:
 
 - https://dev.netatmo.com/doc/authentication/usercred
