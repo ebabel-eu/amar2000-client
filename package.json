@@ -4,7 +4,7 @@
   "description": "Dashboard the environment data of an office and alerts when parameters enter unhealthy ranges.",
   "main": "index.js",
   "scripts": {
-    "postinstall": "node ./node_modules/webpack/bin/webpack.js --config ./webpack.config.js --progress --colors",
+    "postinstall": "node ./node_modules/webpack/bin/webpack.js -p --config ./webpack.config.js --progress --colors",
     "start": "node index.js",
     "test": "karma start --single-run",
     "test-watch": "karma start"
@@ -41,6 +41,7 @@
     "wallaby-webpack": "0.0.21"
   },
   "dependencies": {
+    "babel-preset-react-optimize": "1.0.1",
     "webpack": "1.12.14",
     "babel-core": "6.7.4",
     "babel-eslint": "6.0.2",
