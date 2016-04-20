@@ -42,12 +42,10 @@ ssl
 coverage
 .nyc_output
 *.log
+build
 
 # Intellij project files
 *.iml
 *.ipr
 *.iws
 .idea/
-
-# AMAR2000 files
-build/
