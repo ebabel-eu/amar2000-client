@@ -1,2 +1,3 @@
+# Do not index this site.
 User-agent: *
 Disallow: /
