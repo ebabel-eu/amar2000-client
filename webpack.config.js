@@ -40,8 +40,9 @@ module.exports = {
       { from: 'favicon.ico' },
       { from: 'robots.txt' },
       { from: 'css/**/*' },
+      { from: 'lib/**/*' },
     ], {
-      copyUnmodified: true,
+      copyUnmodified: false,
     }),
   ],
 
