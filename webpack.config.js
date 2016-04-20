@@ -2,8 +2,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 module.exports = {
+  context: path.join(__dirname, 'src'),
   entry: {
-    bundle: './src/index',
+    bundle: './index',
   },
   devtool: 'source-map',
   output: {
@@ -35,10 +36,10 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin([
-      { from: 'src/index.html' },
-      { from: 'src/favicon.ico' },
-      { from: 'src/robots.txt' },
-      { from: 'src/css/**/*', to: 'build/css' },
+      { from: 'index.html' },
+      { from: 'favicon.ico' },
+      { from: 'robots.txt' },
+      { from: 'css/**/*' },
     ], {
       copyUnmodified: true,
     }),
