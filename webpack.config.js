@@ -38,7 +38,7 @@ module.exports = {
       { from: 'src/index.html' },
       { from: 'src/favicon.ico' },
       { from: 'src/robots.txt' },
-      { from: 'src/css' },
+      { from: 'src/css/**/*', to: 'build/css' },
     ], {
       copyUnmodified: true,
     }),
