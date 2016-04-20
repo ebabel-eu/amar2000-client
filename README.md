@@ -1,4 +1,4 @@
-# AMAR2000 client
+# [AMAR2000 client](https://amar2000-client.herokuapp.com/) [![wercker status](https://app.wercker.com/status/801fa0b25ec6c9b39b0d7a5fe2bbd000/s "wercker status")](https://app.wercker.com/project/bykey/801fa0b25ec6c9b39b0d7a5fe2bbd000)
 
 Dashboard the environment data of an office and alerts when parameters enter unhealthy ranges.
 
