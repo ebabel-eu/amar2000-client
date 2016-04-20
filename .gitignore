@@ -50,5 +50,4 @@ coverage
 .idea/
 
 # AMAR2000 files
-build/bundle.js
-build/bundle.js.map
+build/
