@@ -1,16 +1,17 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 module.exports = {
   entry: {
-    'bundle': './src/index'
+    bundle: './src/index',
   },
   devtool: 'source-map',
   output: {
     path: path.resolve(path.dirname(), 'build'),
-    filename: '[name].js'
+    filename: '[name].js',
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.scss', '.css']
+    extensions: ['', '.js', '.jsx', '.scss', '.css'],
   },
   module: {
     loaders: [
@@ -19,17 +20,17 @@ module.exports = {
         exclude: /(node_modules)/,
         loader: 'babel',
         query: {
-          presets: ['es2015', 'react']
-        }
+          presets: ['es2015', 'react'],
+        },
       },
       {
         test: /\.scss$/,
-        loader: 'style!css!sass'
+        loader: 'style!css!sass',
       },
       {
         test: /\.css$/,
-        loader: 'style!css?'
-      }
-    ]
-  }
+        loader: 'style!css?',
+      },
+    ],
+  },
 };

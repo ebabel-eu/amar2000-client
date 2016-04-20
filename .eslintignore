@@ -1,7 +1,6 @@
 build
 **/*.spec.js
-Wallaby.js
-webpack.config.js
+wallaby.js
 package.json
 karma.conf.js
 jsconfig.json
