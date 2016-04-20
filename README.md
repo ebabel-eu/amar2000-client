@@ -46,30 +46,32 @@ http-server build/
 
 Browse to http://localhost:8080 or 8081
 
-## Deploy to Heroku (staging)
+## Deploy to staging
 
 Any code merged into the develop branch and pushed to the Github repository
-will be deployed to Heroku staging environment.
+will be built on Wercker and then, if successful, deployed to Heroku staging environment.
 
 ```
-[ develop branch ] => [ Heroku staging ]
+[ develop branch ] => [Wercker pipeline] => [ Heroku staging ]
 ```
 
 Browse to https://amar2000-client-staging.herokuapp.com/
 
 ## Deploy to Heroku (production)
 
-There are two methods to deploy to production:
-
-1 - Promote the code that has been deployed to staging 
+Promote the code that has been deployed to staging 
 to the production environment by using the Heroku web app.
 
-2 - Any code merged into the master branch and pushed to the Github repository 
-will be deployed to Heroku production environment.
 
 ```
-[ master branch ] => [ Heroku production ]
+[ Heroku staging ] => [ Heroku production ]
 ```
+
+Browse to https://amar2000-client.herokuapp.com/
+
+Note: all deployments can be rollbacked on the Heroku web app.
+
+## Tag a version that will be promoted to production
 
 Create a tag with a version vX.Y.Z, following the canonical versioning rules.
 
@@ -81,10 +83,6 @@ Example:
 git tag -a v1.0.0 -m "Version deployed at the end of the Hackaton that launched this app."
 git push --tags
 ```
-
-Browse to https://amar2000-client.herokuapp.com/
-
-Note: all deployments can be rollbacked on the Heroku web app.
 
 ## Visual Studio Code setup [optional]
 
