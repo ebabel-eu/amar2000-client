@@ -123,8 +123,10 @@ Currently being developed: v1.0.1
 ### v1.0.1 Refactoring and improvements (future release)
 - creation of a staging environment
 - post install step in package.json to run webpack
+- Wercker continuous integration and deployment to Staging
+- Heroku final deployment to Production
 - refactoring of dev and live dependencies to fit the post install step
-- removal of bundle from repos
+- removal of all build files from repos
 - range parameters moved to constants.js instead of hardcoded magic numbers
 - font name refactoring
 - robots.txt file
