@@ -2,7 +2,7 @@
   "name": "amar2000-client",
   "version": "1.0.1",
   "description": "Dashboard the environment data of an office and alerts when parameters enter unhealthy ranges.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "postinstall": "node ./node_modules/webpack/bin/webpack.js -p --config ./webpack.config.js --progress --colors",
     "start": "http-server build/",
