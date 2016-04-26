@@ -1,32 +1,34 @@
-(function() {
-  var http = require('http'),
-    express = require('express'),
-    app = express(),
-    port = process.env.PORT || 80,
-    ip = process.env.IP || '0.0.0.0';
+const server = () => {
+  const http = require('http');
+  const express = require('express');
+  const app = express();
+  const port = process.env.PORT || 8080;
+  const ip = process.env.IP || '0.0.0.0';
 
   // Simple logger.
-  app.use(function(req, res, next) {
+  app.use((req, res, next) => {
     console.log('%s %s', req.method, req.url);
     next();
   });
 
   // Set generic headers used in all responses.
-  app.use(function(req, res, next) {
+  app.use((req, res, next) => {
     res.set({
       'X-Powered-By': 'NodeJS',
-      'Access-Control-Allow-Methods': 'GET, POST',               // Allowed request http verbs.
-      'Access-Control-Allow-Headers': 'X-Requested-With,content-type'    // Allowed request headers.
+      'Access-Control-Allow-Methods': 'GET, POST',
+      'Access-Control-Allow-Headers': 'X-Requested-With,content-type',
     });
     next();
   });
 
   // Handle all static file GET requests.
-  app.use(express.static(__dirname + '/build'));
+  app.use(express.static(`${__dirname}/build`));
 
   http.createServer(
     app.handle.bind(app)
-  ).listen(port, ip, function() {
-    console.log('Listening on http://' + ip + ':' + port);
+  ).listen(port, ip, () => {
+    console.log(`Listening on http://${ip}:${port}`);
   });
-} ());
+};
+
+server();
