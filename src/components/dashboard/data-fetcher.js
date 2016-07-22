@@ -15,10 +15,12 @@ export default class DataFetcher {
         dataType: 'json',
       })
         .done(data => {
-          const dataConverter = new DataConverter(data);
-          const result = dataConverter.convert();
+           // const dataConverter = new DataConverter(data);
+           // const result = dataConverter.convert();
 
-          resolve(result);
+          resolve(data);
+
+
         })
         .fail(jqXHR => {
           const error = jqXHR.error();

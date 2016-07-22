@@ -17,5 +17,11 @@ export default class DataSyncer {
       // for this will be able to update their state.
       raiseEvent('sync-data', { result });
     };
+
+
+    this.climate.client.refreshBrowser = zones => {
+      document.location = '/';
+    };
+
   }
 }

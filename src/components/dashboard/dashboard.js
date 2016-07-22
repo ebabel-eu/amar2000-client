@@ -1,30 +1,30 @@
 import React, { Component } from 'react';
 
-import PageHeader from '../page-header/page-header';
-import Panel from '../panel/panel';
 import DataFetcher from './data-fetcher.js';
 import DataSyncer from './data-syncer.js';
-import Ranges from './ranges.js';
 import SplashScreen from './splashscreen';
-import TemperatureUnit from './temperature-unit.js';
+import Room from './Room';
 import TimerMixin from 'react-timer-mixin';
-
 import * as _ from '../../constants.js';
+
 
 import './dashboard.scss';
 
 export default class Dashboard extends Component {
   constructor() {
     super();
-    this.dataFetcher = new DataFetcher('//amar2000.azurewebsites.net/api/climate');
-    this.dataSyncer = new DataSyncer('//amar2000.azurewebsites.net/signalr/hubs');
+    // this.dataFetcher = new DataFetcher('//amar2000.azurewebsites.net/api/climate');
+    // this.dataSyncer = new DataSyncer('//amar2000.azurewebsites.net/signalr/hubs');
+
+    this.dataFetcher = new DataFetcher('//test-amar2000.azurewebsites.net/api/climate');
+    this.dataSyncer = new DataSyncer('//test-amar2000.azurewebsites.net/signalr/hubs');
+
+
     this.state = {
       data: {
-        co2: null,
-        temperature: null,
-        humidity: null,
-        noise: null,
+
       },
+      activeRoom: 0
     };
   }
 
@@ -32,18 +32,33 @@ export default class Dashboard extends Component {
     TimerMixin.setTimeout(() => {
       this.dataFetcher.fetch()
         .then(data => {
+          // console.log('data = '+data)
           this.setState({
-            data,
+            data:data
           });
+
         })
         .catch(error => {
           throw new Error(error);
         });
+
+
+    }, 1000);
+
+
+    TimerMixin.setInterval(() => {
+      var newroomindex =  this.state.activeRoom + 1;
+      if( newroomindex == this.state.data.length ){
+        newroomindex = 0;
+      }
+      this.setState({
+        activeRoom: newroomindex
+      });
     }, 5000);
 
-    document.addEventListener('sync-data', this.syncData.bind(this), _.USE_CAPTURE);
+     document.addEventListener('sync-data', this.syncData.bind(this), _.USE_CAPTURE);
 
-    this.dataSyncer.start();
+     this.dataSyncer.start();
   }
 
   syncData(input) {
@@ -52,83 +67,44 @@ export default class Dashboard extends Component {
       data,
     });
   }
-
+  // renderRoom(key){
+  //   console.log('data key = ' +  this.state.data)
+  //   return(<Room key={key} data={this.state.data[key]}/>)
+  // }
   render() {
-    const data = this.state.data;
+    // const data = this.state.data;
+    // <div className="zones">
+    //   <h1>Condition Zones</h1>
+    //   <div className="zoneblock">
+    //     <span className="zone">zone1</span>
+    //     <span className="dot"></span> Normal <br />
+    //     <span className="zone">zone2</span>
+    //     <span className="dot warning"></span> Humidity high <br />
+    //     <span className="zone">zone3</span>
+    //     <span className="dot danger"></span> Bad
+    //   </div>
+    //
+    //   <div className="zoneblock">
+    //     <span className="zone">zone4</span>
+    //     <span className="dot"></span> Normal <br />
+    //     <span className="zone">zone5</span>
+    //     <span className="dot warning"></span> Normal <br />
+    //     <span className="zone">zone6</span>
+    //     <span className="dot warning"></span> CO₂ average
+    //   </div>
+    // </div>
+    // <div className="container">
+    //
+    //   {Object.keys(this.state.data).map(this.renderRoom.bind(this))}
+    // </div>
 
-    const co2Ranges = new Ranges(
-      _.CO2_LOWEST,
-      _.CO2_LOW,
-      _.CO2_HIGH,
-      _.CO2_HIGHEST
-    );
 
-    const temperatureRanges = new Ranges(
-      _.TEMPERATURE_LOWEST,
-      _.TEMPERATURE_LOW,
-      _.TEMPERATURE_HIGH,
-      _.TEMPERATURE_HIGHEST
-    );
 
-    const humidityRanges = new Ranges(
-      _.HUMIDITY_LOWEST,
-      _.HUMIDITY_LOW,
-      _.HUMIDITY_HIGH,
-      _.HUMIDITY_HIGHEST
-    );
-
-    const noiseRanges = new Ranges(
-      _.NOISE_LOWEST,
-      _.NOISE_LOW,
-      _.NOISE_HIGH,
-      _.NOISE_HIGHEST
-    );
-
-    const minimumTemperature = this.state.data.minimumTemperature;
-    const maximumTemperature = this.state.data.maximumTemperature;
-    const temperatureUnit = new TemperatureUnit(minimumTemperature, maximumTemperature);
-    const temperatureUnitText = temperatureUnit.getText();
-
-    if (data.co2 !== null) {
+    if (this.state.data.length > 0) {
       return (
-        <div className="container">
-          <PageHeader title="Zone 1" subtitle="Circle A" />
-          <div className="circles">
-            <Panel title="CO₂" type="co2" unit="ppm"
-              data={this.state.data.co2} ranges={co2Ranges}
-            />
-            <Panel title="Temperature" type="temperature" unit={temperatureUnitText}
-              data={this.state.data.temperature} ranges={temperatureRanges}
-              dataUnit="°"
-            />
-            <Panel title="Humidity" type="humidity" unit="%"
-              data={this.state.data.humidity} ranges={humidityRanges}
-            />
-            <Panel title="Noise" type="noise" unit="dB"
-              data={this.state.data.noise} ranges={noiseRanges}
-            />
+          <div className="container">
+            <Room data={this.state.data[ this.state.activeRoom ]}/>
           </div>
-          <div className="zones">
-            <h1>Condition Zones</h1>
-            <div className="zoneblock">
-              <span className="zone">zone1</span>
-              <span className="dot"></span> Normal <br />
-              <span className="zone">zone2</span>
-              <span className="dot warning"></span> Humidity high <br />
-              <span className="zone">zone3</span>
-              <span className="dot danger"></span> Bad
-            </div>
-
-            <div className="zoneblock">
-              <span className="zone">zone4</span>
-              <span className="dot"></span> Normal <br />
-              <span className="zone">zone5</span>
-              <span className="dot warning"></span> Normal <br />
-              <span className="zone">zone6</span>
-              <span className="dot warning"></span> CO₂ average
-            </div>
-          </div>
-        </div>
       );
     }
 
